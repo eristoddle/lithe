@@ -11,7 +11,7 @@
 <head>
 	<?=$this->html->charset()?>
 	<title><?=$this->title()?></title>
-	<?=$this->html->style(array('bootstrap.min', 'bootstrap-responsive.min', 'app')); ?>
+	<?=$this->html->style(array('bootstrap.min', 'bootstrap-responsive.min')); ?>
 	<?=$this->html->script('head.js')?>
 	<?=$this->scripts()?>
 	<?=$this->html->link('Icon', null, array('type' => 'icon'))?>
@@ -35,7 +35,7 @@
 			"<?=$this->url('/js/jquery.min.js')?>",
 			"<?=$this->url('/js/icanhaz.min.js')?>",
 			"<?=$this->url('/js/bootstrap.min.js')?>",
-			"<?=$this->url('/js/app.js')?>",
+			"<?//=$this->url('/js/app.js')?>",
 			function() {
 				ich.grabTemplates(); //make sure, icanhaz bootstraps correctly.
 			}
