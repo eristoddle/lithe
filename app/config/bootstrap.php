@@ -62,7 +62,7 @@ require __DIR__ . '/bootstrap/action.php';
  * This file contains configuration for session (and/or cookie) storage, and user or web service
  * authentication.
  */
-// require __DIR__ . '/bootstrap/session.php';
+require __DIR__ . '/bootstrap/session.php';
 
 /**
  * This file contains your application's globalization rules, including inflections,
@@ -84,4 +84,14 @@ if (PHP_SAPI === 'cli') {
 	require __DIR__ . '/bootstrap/console.php';
 }
 
+/**
+ * Form Authorization
+ * https://sites.google.com/a/mattvanandel.com/lithium-framework/7-authentication/72--enabling-auth-support
+ */
+require __DIR__ . '/bootstrap/auth.php';
+
+/**
+ * Development Only
+ */
+ini_set("display_errors", 1);
 ?>
