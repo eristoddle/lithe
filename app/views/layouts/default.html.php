@@ -9,23 +9,37 @@
 <!doctype html>
 <html>
 <head>
-	<?php echo $this->html->charset();?>
-	<title>Application &gt; <?php echo $this->title(); ?></title>
-	<?php echo $this->html->style(array('debug', 'lithium')); ?>
-	<?php echo $this->scripts(); ?>
-	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
+	<?=$this->html->charset();?>
+	<title><?=$this->title(); ?></title>
+	<?=$this->html->style(array('bootstrap.min', 'bootstrap-responsive.min', 'app')); ?>
+	<?=$this->html->script('head.js'); ?>
+	<?=$this->scripts(); ?>
+	<?=$this->html->link('Icon', null, array('type' => 'icon')); ?>
 </head>
 <body class="app">
-	<div id="container">
-		<div id="header">
-			<h1>Application</h1>
-			<h2>
-				Powered by <?php echo $this->html->link('Lithium', 'http://lithify.me/'); ?>.
-			</h2>
-		</div>
+<?//=$this->_render('element', 'topnav'); ?>
+	<div class="container">
+		<header id="header">
+			<?//=$this->_render('element', 'header'); ?>
+		</header>
 		<div id="content">
-			<?php echo $this->content(); ?>
+			<?//$this->sessionMessage->renderAll(); ?>
+			<?=$this->content(); ?>
 		</div>
+		<footer id="footer">
+			<?//=$this->_render('element', 'footer'); ?>
+		</footer>
 	</div>
+	<script type="text/javascript" charset="utf-8">
+		head.js(
+			"<?=$this->url('/js/jquery.min.js'); ?>",
+			"<?=$this->url('/js/icanhaz.min.js'); ?>",
+			"<?=$this->url('/js/bootstrap.min.js'); ?>",
+			"<?=$this->url('/js/app.js'); ?>",
+			function() {
+				ich.grabTemplates(); //make sure, icanhaz bootstraps correctly.
+			}
+		);
+	</script>
 </body>
 </html>
