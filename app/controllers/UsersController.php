@@ -14,7 +14,13 @@ class UsersController extends \lithium\action\Controller {
     }
 	
 	public function add(){
+		
 		$register = NULL;
+		
+		if (!Auth::check('default', $this->request)){
+			//Redirect if not logged in
+			return $this->redirect('/users/login');
+		}
 
 		if ( $this->request->data ){
 			$register = Users::create($this->request->data);
@@ -27,6 +33,28 @@ class UsersController extends \lithium\action\Controller {
 
 		return compact('register','data');
 	}
+	
+	public function login() {
+		//assume there's no problem with authentication
+		$noauth = false;
+		//perform the authentication check and redirect on success
+		if (Auth::check('default', $this->request)){
+			//Redirect on successful login
+			return $this->redirect('/');
+		}
+		//if theres still post data, and we weren't redirected above, then login failed
+		if ($this->request->data){
+			//Login failed, trigger the error message
+			$noauth = true;
+		}
+		//Return noauth status
+		return compact('noauth');
+	}
+	
+	public function logout() {
+        Auth::clear('default');
+        return $this->redirect('/');
+    }
 
 }
 

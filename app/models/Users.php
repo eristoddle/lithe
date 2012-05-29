@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use lithium\security\Password;
 
 class Users extends \lithium\data\Model {
 
@@ -16,6 +17,7 @@ class Users extends \lithium\data\Model {
 
 }
 
+#TODO: Does This Belong HERE
 //We call the applyFilter() method OUTSIDE the class to create our new filter rules
 Users::applyFilter('save', function($self, $params, $chain){
     
@@ -25,7 +27,7 @@ Users::applyFilter('save', function($self, $params, $chain){
     //If an id doesn't exist yet, then we know we're saving for the first time. If a 
     //password is provided, we need to hash it
     if(!$record->id && !empty($record->password)){
-        $record->password = \lithium\util\String::hash($record->password);
+        $record->password = Password::hash($record->password);
     }
 
     //Write the modified object back to $params

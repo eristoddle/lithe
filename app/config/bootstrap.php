@@ -22,6 +22,11 @@
  *
  * @see lithium\util\collection\Filters
  */
+ 
+ /**
+ * Development Only
+ */
+ini_set("display_errors", 1);
 
 /**
  * The libraries file contains the loading instructions for all plugins, frameworks and other class
@@ -84,14 +89,4 @@ if (PHP_SAPI === 'cli') {
 	require __DIR__ . '/bootstrap/console.php';
 }
 
-/**
- * Form Authorization
- * https://sites.google.com/a/mattvanandel.com/lithium-framework/7-authentication/72--enabling-auth-support
- */
-require __DIR__ . '/bootstrap/auth.php';
-
-/**
- * Development Only
- */
-ini_set("display_errors", 1);
 ?>

@@ -19,6 +19,11 @@
 use lithium\net\http\Router;
 use lithium\core\Environment;
 
+/**Shorten Login urls
+*/
+Router::connect('/login', 'Users::login');
+Router::connect('/logout', 'Users::logout');
+
 /**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,
  * its action called `view()`, and we pass a param to select the view file
@@ -64,8 +69,8 @@ if (!Environment::is('production')) {
  * If you're using a document-oriented database, such as CouchDB or MongoDB, or another type of
  * database which uses 24-character hexidecimal values as primary keys, uncomment the routes below.
  */
-// Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
-// Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
+Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}.{:type}', array('id' => null));
+Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
 
 /**
  * Finally, connect the default route. This route acts as a catch-all, intercepting requests in the
