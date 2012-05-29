@@ -9,33 +9,33 @@
 <!doctype html>
 <html>
 <head>
-	<?=$this->html->charset();?>
-	<title><?=$this->title(); ?></title>
+	<?=$this->html->charset()?>
+	<title><?=$this->title()?></title>
 	<?=$this->html->style(array('bootstrap.min', 'bootstrap-responsive.min', 'app')); ?>
-	<?=$this->html->script('head.js'); ?>
-	<?=$this->scripts(); ?>
-	<?=$this->html->link('Icon', null, array('type' => 'icon')); ?>
+	<?=$this->html->script('head.js')?>
+	<?=$this->scripts()?>
+	<?=$this->html->link('Icon', null, array('type' => 'icon'))?>
 </head>
 <body class="app">
-<?//=$this->_render('element', 'topnav'); ?>
+<?//=$this->_render('element', 'topnav')?>
 	<div class="container">
 		<header id="header">
-			<?//=$this->_render('element', 'header'); ?>
+			<?=$this->_render('element', 'header')?>
 		</header>
 		<div id="content">
-			<?//$this->sessionMessage->renderAll(); ?>
-			<?=$this->content(); ?>
+			<?//$this->sessionMessage->renderAll()?>
+			<?=$this->content()?>
 		</div>
 		<footer id="footer">
-			<?//=$this->_render('element', 'footer'); ?>
+			<?=$this->_render('element', 'footer')?>
 		</footer>
 	</div>
 	<script type="text/javascript" charset="utf-8">
 		head.js(
-			"<?=$this->url('/js/jquery.min.js'); ?>",
-			"<?=$this->url('/js/icanhaz.min.js'); ?>",
-			"<?=$this->url('/js/bootstrap.min.js'); ?>",
-			"<?=$this->url('/js/app.js'); ?>",
+			"<?=$this->url('/js/jquery.min.js')?>",
+			"<?=$this->url('/js/icanhaz.min.js')?>",
+			"<?=$this->url('/js/bootstrap.min.js')?>",
+			"<?=$this->url('/js/app.js')?>",
 			function() {
 				ich.grabTemplates(); //make sure, icanhaz bootstraps correctly.
 			}
