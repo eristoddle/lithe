@@ -32,6 +32,18 @@ class PostsController extends \lithium\action\Controller {
 		return compact('success');
 	}
 	
+	public function tags(){
+		//Dont run the query if no tag is provided
+		if($this->request->args[0]){
+			//Get a list of post with the tag
+			//TODO: Write query
+			//Send the retrieved post data to the view
+			return compact('post');
+		}
+		//since no tag was specified, return a list of tags
+		return compact('tags');
+	}
+	
 	public function view() {
 		//Dont run the query if no post id is provided
 		if($this->request->args[0]){
