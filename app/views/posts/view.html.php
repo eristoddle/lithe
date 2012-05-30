@@ -1,8 +1,20 @@
 <article>
 	<h1><?=$post->title ?></h1>
-	<p><?=$post->body ?></p>
-	<p><?=$post->tags ?></p>
+	<hr/>
+	<div class="post-body">
+		<?=$post->body ?>
+	</div>
+		<?php if(isset($post->tags)): ?>
+		<hr/>
+		<div class="tags">
+			<h4>Tags</h4>
+			<?php foreach($post->tags as $tag): ?>
+				<span class="label label-info"><?=$tag?></span>
+		   <?php endforeach; ?>
+		   </div>
+		<?php endif; ?>
 <article>
+<hr/>
 <div class="comments">
 	<h2>Comments</h2>
 	<?php if(isset($post->comment)): ?>

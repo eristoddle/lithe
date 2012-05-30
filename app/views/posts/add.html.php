@@ -7,5 +7,7 @@
 <?=$this->form->end()?>
 
 <? if ($success): ?>
-    <p>Post Successfully Saved</p>
+	<div class="alert alert-success">
+		<p>Post Successfully Saved</p>
+	</div>
 <? endif; ?>

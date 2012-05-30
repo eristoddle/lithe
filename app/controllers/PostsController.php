@@ -1,9 +1,9 @@
 <?php
+#TODO: Add published value, add desc, add pagination
 
 namespace app\controllers;
 
 use app\models\Posts;
-//lets define a shortcut to the Auth class
 use lithium\security\Auth;
 
 class PostsController extends \lithium\action\Controller {
@@ -23,7 +23,10 @@ class PostsController extends \lithium\action\Controller {
 		}
 
 		if ($this->request->data) {
-			$post = Posts::create($this->request->data);
+			#TODO: I am pretty sure this is not the right way and need to trim
+			$new_data = (array)$this->request->data;			
+			$new_data['tags'] = explode(",",$new_data['tags']);
+			$post = Posts::create($new_data);
 			$success = $post->save();
 		}
 		return compact('success');
