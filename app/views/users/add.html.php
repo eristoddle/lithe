@@ -6,5 +6,5 @@
     <?=$this->form->field('password',array('type'=>'password')); ?>
 	<?=$this->form->field('website'); ?>
 	<?=$this->form->field('email'); ?>
-    <?=$this->form->submit('Add User');?>
+    <?=$this->form->submit('Add User', array('class' => 'btn btn-inverse'));?>
 <?=$this->form->end(); ?>

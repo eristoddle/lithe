@@ -32,7 +32,7 @@ Router::connect('/logout', 'Users::logout');
  *
  * @see app\controllers\PagesController
  */
-Router::connect('/', 'Posts::view');
+Router::connect('/', 'Posts::index');
 
 /**
  * Connect the rest of `PagesController`'s URLs. This will route URLs like `/pages/about` to
