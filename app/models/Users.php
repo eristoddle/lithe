@@ -14,6 +14,10 @@ class Users extends \lithium\data\Model {
             array('notEmpty', 'message'=>'You must include a password.')
         ),
     );
+	
+	public $hasMany = array('Posts' => array(
+	'key' => array('id' => 'post_id')
+	));
 
 }
 

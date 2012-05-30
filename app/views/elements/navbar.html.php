@@ -11,7 +11,11 @@
 				<ul class="nav">
 					<li class="">
 						<a href="/">Home</a>
+					</li>
+					<li class="">
 						<a href="/pages/about">About</a>
+					</li>
+					<li class="">
 						<a href="/pages/contact">Contact</a>
 					</li>
 				</ul>
