@@ -11,6 +11,8 @@
             <ul class="nav">
                 <li class="">
                     <a href="/">Home</a>
+					<a href="/pages/about">About</a>
+					<a href="/pages/contact">Contact</a>
                 </li>
             </ul>
         </div>

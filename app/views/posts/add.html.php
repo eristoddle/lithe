@@ -5,6 +5,6 @@
     <?=$this->form->submit('Add Post'); ?>
 <?=$this->form->end(); ?>
 
-<?php if ($success): ?>
+<? if ($success): ?>
     <p>Post Successfully Saved</p>
-<?php endif; ?>
+<? endif; ?>
