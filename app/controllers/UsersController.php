@@ -34,6 +34,7 @@ class UsersController extends \lithium\action\Controller {
 		return compact('register','data');
 	}
 	
+	#TODO: Make Login and Logout Helpers - See Steve's code
 	public function login() {
 		//assume there's no problem with authentication
 		$noauth = false;

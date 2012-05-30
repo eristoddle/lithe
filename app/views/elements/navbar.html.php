@@ -6,17 +6,35 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="/"><?//=$this->title()?></a>
+			<a class="brand" href="/">lithe</a>
+			<!--Think I may have to add dropdown to bootstrap-->
+			<!--<div class="btn-group pull-right">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-user"></i> Username
+						<span class="caret"></span>
+					</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Profile</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Sign Out</a></li>
+				</ul>
+			</div>-->
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li class="">
 						<a href="/">Home</a>
 					</li>
 					<li class="">
-						<a href="/pages/about">About</a>
+						<a href="/posts/add/">Add Post</a>
 					</li>
 					<li class="">
-						<a href="/pages/contact">Contact</a>
+						<a href="/users/add/">Add User</a>
+					</li>
+					<li class="">
+						<a href="/login">Login</a>
+					</li>
+					<li class="">
+						<a href="/logout">Logout</a>
 					</li>
 				</ul>
 			</div>

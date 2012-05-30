@@ -15,12 +15,13 @@
 	<?=$this->html->script('head.js')?>
 	<?=$this->scripts()?>
 	<?=$this->html->link('Icon', null, array('type' => 'icon'))?>
+	<?= $this->html->link('RSS-Feed', '/posts.rss', array('type' => 'rss')); ?>
 </head>
 <body class="app">
 <?=$this->_render('element', 'navbar')?>
 	<div class="container">
 		<header id="header">
-			<?//=$this->_render('element', 'header')?>
+			<?=$this->_render('element', 'header')?>
 		</header>
 		<div id="content">
 			<?//$this->sessionMessage->renderAll()?>

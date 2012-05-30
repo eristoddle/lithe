@@ -22,8 +22,10 @@
  * }}}
  */
 use lithium\util\Collection;
+use lithium\net\http\Media;
 
 Collection::formats('lithium\net\http\Media');
+Media::type('rss', 'application/rss+xml');
 
 /**
  * This filter is a convenience method which allows you to automatically route requests for static
