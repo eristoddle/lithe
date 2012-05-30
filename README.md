@@ -3,6 +3,8 @@
 
 I do plan on using and testing this project in the wild for active sites, once I get everything working. In fact I will be using it before I have it finished as soon as I can edit and post. Tired of Wordpress and it's hugeness. I can get a lot of the functionality I need easily just simply switching to MongoDB instead of MySql and Lithium makes it easy.
 
+[Blog Post Here](http://eristoddle.github.com/lithium/2012/05/29/lithe-a-blog-using-the-lithium-framework/)
+
 ##DONE
 - Basic Posts - title, body,tags
 - Authenticated users
