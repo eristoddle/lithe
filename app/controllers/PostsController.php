@@ -40,6 +40,30 @@ class PostsController extends \lithium\action\Controller {
 		//since no post id was specified, redirect to the index page
 		$this->redirect(array('Posts::index'));
 	}
+	
+	public function comment($id=null) {
+        // check to make sure the request is set
+        if(!is_null($this->request->data)) {
+            $data = &$this->request->data;
+            //we'll set up our query
+            $query = array(
+                 '$push'=> array('comment'=>array(
+                     'title'=>$data['title'],
+                     'contact'=>$data['contact'],
+                     'body'=>$data['body']
+                    )
+                 )
+            );
+		//set up the conditions
+            $conditions = array('_id'=>$id);
+		// execute the query
+            $result = Posts::update($query, $conditions, array('atomic' => false));
+        } 
+
+        // you'll want to add checks, but for simplicity, we'll just send them back to the individual post
+            $this->redirect("/posts/view/$id/");
+        } 
+
 }
 
 ?>
