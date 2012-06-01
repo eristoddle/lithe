@@ -19,10 +19,11 @@
 use lithium\net\http\Router;
 use lithium\core\Environment;
 
-/**Shorten Login urls
+/**Shorten or redirect
 */
 Router::connect('/login', 'Users::login');
 Router::connect('/logout', 'Users::logout');
+Router::connect('/tags/{:tag}', 'Posts::tags');
 
 /**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,

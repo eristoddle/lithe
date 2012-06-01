@@ -11,7 +11,7 @@
 			<?php foreach($post->tags as $tag): ?>
 				<span class="label label-info"><?=$tag?></span>
 		   <?php endforeach; ?>
-		   </div>
+		</div>
 		<?php endif; ?>
 <article>
 <hr/>
