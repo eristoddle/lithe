@@ -24,7 +24,7 @@ class PostsController extends \lithium\action\Controller {
 
 		if ($this->request->data) {
 			#TODO: I am pretty sure this is not the right way and need to trim
-			$new_data = (array)$this->request->data;			
+			$new_data = &$this->request->data;			
 			$new_data['tags'] = explode(",",$new_data['tags']);
 			$post = Posts::create($new_data);
 			$success = $post->save();
@@ -32,23 +32,34 @@ class PostsController extends \lithium\action\Controller {
 		return compact('success');
 	}
 	
-	public function tags(){
+	public function tags($tag){
+	
 		//Dont run the query if no tag is provided
 		if($this->request->args[0]){
 			//Get a list of post with the tag
 			//TODO: Write query
+			$posts = Posts::find('all', array(
+				'fields' => array('tags'), 
+				'order' => array('created' => 'DESC')
+			));
 			//Send the retrieved post data to the view
-			return compact('post');
+			return compact('posts');
 		}
+		
 		//since no tag was specified, return a list of tags
+		$tags = Posts::find('all', array(
+				'fields' => array('tags'), 
+				'order' => array('created' => 'DESC')
+		));
 		return compact('tags');
+		
 	}
 	
-	public function view() {
+	public function view($id=null) {
 		//Dont run the query if no post id is provided
-		if($this->request->args[0]){
+		if($id){
 			//Get single record from the database where post id matches the URL
-			$post = Posts::first($this->request->args[0]);
+			$post = Posts::first($id);
 			//Send the retrieved post data to the view
 			return compact('post');
 		}

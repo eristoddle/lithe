@@ -14,6 +14,9 @@ class UsersController extends \lithium\action\Controller {
     }
 	
 	public function add(){
+	
+		#TODO: Slugs
+		#http://blog.amalraghav.com/lithium-filters-a-practical-example/
 		
 		$register = NULL;
 		
@@ -34,7 +37,8 @@ class UsersController extends \lithium\action\Controller {
 		return compact('register','data');
 	}
 	
-	#TODO: Make Login and Logout Helpers - See Steve's code
+	#TODO: Make Login and Logout Filters - See Steve's code
+	#And http://dev.lithify.me/drafts/source/en/02_lithium_basics/02_filters.wiki
 	public function login() {
 		//assume there's no problem with authentication
 		$noauth = false;
