@@ -23,8 +23,6 @@ use lithium\core\Environment;
 */
 Router::connect('/login', 'Users::login');
 Router::connect('/logout', 'Users::logout');
-//Router::connect('/tags/{:tag}', 'Posts::tags');
-//Router::connect('/tags/', 'Posts::tags');
 
 /**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,

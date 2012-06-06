@@ -9,7 +9,7 @@
 		<div class="tags">
 			<h4>Tags</h4>
 			<?php foreach($post->tags as $tag): ?>
-				<span class="label label-info"><?=$this->html->link($tag,'/posts/tags/'.$tag) ?></span>
+				<span class="label label-info"><?=$this->html->link($tag,'/tags/view/'.$tag) ?></span>
 		   <?php endforeach; ?>
 		</div>
 		<?php endif; ?>

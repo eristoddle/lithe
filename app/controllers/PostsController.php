@@ -32,31 +32,6 @@ class PostsController extends \lithium\action\Controller {
 		return compact('success');
 	}
 	
-	public function tags($tag=null){
-	
-		//Dont run the query if no tag is provided
-		if($tag){
-			//Get a list of posts with the tag
-			$posts = Posts::find('all', array(
-				'conditions' => array('tags' => $tag)
-			));
-			//Send the retrieved post data to the view
-			return compact('posts');
-		}
-		
-		//since no tag was specified, return a list of tags
-		$result = Posts::find('all', array(
-				'fields' => array('tags')
-		));
-		$tags = array();
-		foreach($result as $t){
-			$tags = array_merge($tags,$t->tags->to('array'));
-		}
-		$tags = array_unique($tags);
-		return compact('tags');
-		
-	}
-	
 	public function view($id=null) {
 		//Dont run the query if no post id is provided
 		if($id){
