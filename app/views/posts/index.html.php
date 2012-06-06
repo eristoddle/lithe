@@ -1,4 +1,3 @@
-
 <? foreach($posts as $post): ?>
 <article>
     <h2>

@@ -11,6 +11,9 @@ class PostsController extends \lithium\action\Controller {
     public function index() {
         $posts = Posts::all();
 		//$posts = Post::all(array('order' => array('created' => 'DESC')));
+		#Docs with examples on doing this are hard to find
+		#Write about doing this
+		$this->_render['layout'] = 'home';
         return compact('posts');
     }
 	
@@ -18,7 +21,6 @@ class PostsController extends \lithium\action\Controller {
 		$success = false;
 		
 		if (!Auth::check('default', $this->request)){
-			//Redirect if not logged in
 			return $this->redirect('/users/login');
 		}
 
@@ -33,22 +35,16 @@ class PostsController extends \lithium\action\Controller {
 	}
 	
 	public function view($id=null) {
-		//Dont run the query if no post id is provided
 		if($id){
-			//Get single record from the database where post id matches the URL
 			$post = Posts::first($id);
-			//Send the retrieved post data to the view
 			return compact('post');
 		}
-		//since no post id was specified, redirect to the index page
 		$this->redirect(array('Posts::index'));
 	}
 	
 	public function comment($id=null) {
-        // check to make sure the request is set
         if(!is_null($this->request->data)) {
             $data = &$this->request->data;
-            //we'll set up our query
             $query = array(
                  '$push'=> array('comment'=>array(
                      'title'=>$data['title'],
@@ -57,14 +53,12 @@ class PostsController extends \lithium\action\Controller {
                     )
                  )
             );
-		//set up the conditions
             $conditions = array('_id'=>$id);
-		// execute the query
             $result = Posts::update($query, $conditions, array('atomic' => false));
         } 
 
-        // you'll want to add checks, but for simplicity, we'll just send them back to the individual post
             $this->redirect("/posts/view/$id/");
+			
         } 
 
 }
