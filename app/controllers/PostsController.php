@@ -46,9 +46,10 @@ class PostsController extends \lithium\action\Controller {
 		}
 		
 		//since no tag was specified, return a list of tags
-		$tags = Posts::find('all', array(
+		$result = Posts::find('all', array(
 				'fields' => array('tags')
 		));
+		$tags = $result;
 		return compact('tags');
 		
 	}
