@@ -3,7 +3,9 @@
 		<div class="tags">
 		<h2>Tags</h2>
 		<?php foreach($tags as $tag): ?>
-			<span class="label label-info"><? print_r($tag) ?></span>
+			<span class="label label-info"><?=$tag?></span>
+			<? //print_r($tag) ?>
+			<?//var_dump($tag->tags->to('array')) ?>
 	   <?php endforeach; ?>
 		</div>
 	</article>
@@ -13,7 +15,6 @@
 	<article>
 		<h2>
 			<?=$this->html->link($post->title,'/posts/view/'.$post->_id) ?>
-			</a>
 		</h2>
 		<p><?=$post->body ?></p>
 	</article>

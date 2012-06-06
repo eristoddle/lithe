@@ -37,7 +37,6 @@ class PostsController extends \lithium\action\Controller {
 		//Dont run the query if no tag is provided
 		if($tag){
 			//Get a list of posts with the tag
-			//TODO: Write query
 			$posts = Posts::find('all', array(
 				'conditions' => array('tags' => $tag)
 			));
@@ -49,7 +48,11 @@ class PostsController extends \lithium\action\Controller {
 		$result = Posts::find('all', array(
 				'fields' => array('tags')
 		));
-		$tags = $result;
+		$tags = array();
+		foreach($result as $t){
+			$tags = array_merge($tags,$t->tags->to('array'));
+		}
+		$tags = array_unique($tags);
 		return compact('tags');
 		
 	}
