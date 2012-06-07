@@ -62,11 +62,12 @@ class Form extends \lithium\template\helper\Form {
 
         $options['wrap']['class'] .= ' control-group';
 
-        $errors = $this->_binding->errors();
+		#TODO: This errors out if not commented
+        /* $errors = $this->_binding->errors();
 
         if (isset($errors[$name])) {
             $options['wrap']['class'] .= ' error';
-        } 
+        } */ 
 
         # Auto-populate select-box lists from validation rules
         if (isset($options['type']) and $options['type'] == 'select' and !isset($options['list'])) {

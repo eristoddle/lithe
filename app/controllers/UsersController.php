@@ -1,9 +1,7 @@
 <?php
 namespace app\controllers;
 
-//lets define a shortcut to the Auth class
 use lithium\security\Auth;
-//and a shortcut to our Users model
 use app\models\Users;
 
 class UsersController extends \lithium\action\Controller {
@@ -13,46 +11,65 @@ class UsersController extends \lithium\action\Controller {
         return compact('users');
     }
 	
-	public function add(){
+	public function view($id=null) {
+		if($id){
+			$user = Users::first($id);
+			return compact('user');
+		}
+		else{
+			$this->redirect(array('Users::index'));
+		}
+    }
 	
-		#TODO: Slugs
-		#http://blog.amalraghav.com/lithium-filters-a-practical-example/
+	public function add(){
 		
 		$register = NULL;
 		
 		if (!Auth::check('default', $this->request)){
-			//Redirect if not logged in
-			return $this->redirect('/users/login');
+			return $this->redirect('Users::login');
 		}
 
 		if ( $this->request->data ){
 			$register = Users::create($this->request->data);
 			if ( $register->save() ){
-				$this->redirect('/users/');
+				$this->redirect('Users::index');
 			}
 
 		}
-		$data = $this->request->data;
+		$user = $this->request->data;
 
-		return compact('register','data');
+		return compact('register','user');
+	}
+	
+	public function edit($id=null){
+	
+		if (!Auth::check('default', $this->request)){
+			return $this->redirect('Users::login');
+		}
+		
+		$user = Users::find($id);
+		
+		if (!$user){
+			return $this->redirect('Users::login');
+		}
+
+		if (( $this->request->data )&& $user->save($this->request->data)){
+			$register = Users::create($this->request->data);
+			$this->redirect(array('Users::view', 'args' => array($user->id)));
+		}
+
+		return compact('user');
 	}
 	
 	#TODO: Make Login and Logout Filters - See Steve's code
 	#And http://dev.lithify.me/drafts/source/en/02_lithium_basics/02_filters.wiki
 	public function login() {
-		//assume there's no problem with authentication
-		$noauth = false;
-		//perform the authentication check and redirect on success
 		if (Auth::check('default', $this->request)){
-			//Redirect on successful login
 			return $this->redirect('/');
 		}
-		//if theres still post data, and we weren't redirected above, then login failed
 		if ($this->request->data){
-			//Login failed, trigger the error message
 			$noauth = true;
 		}
-		//Return noauth status
 		return compact('noauth');
 	}
 	

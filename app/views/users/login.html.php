@@ -1,3 +1,4 @@
+<h3>Please Login</h4>
 <?php if ($noauth): ?>
 <h4>Login failed</h4>
 <?php endif; ?>

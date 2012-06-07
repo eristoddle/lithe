@@ -9,8 +9,7 @@ use lithium\security\Auth;
 class PostsController extends \lithium\action\Controller {
 
     public function index() {
-        $posts = Posts::all();
-		//$posts = Post::all(array('order' => array('created' => 'DESC')));
+		$posts = Posts::all(array('order' => array('created' => 'DESC')));
 		#Docs with examples on doing this are hard to find
 		#Write about doing this
 		$this->_render['layout'] = 'home';
@@ -21,7 +20,7 @@ class PostsController extends \lithium\action\Controller {
 		$success = false;
 		
 		if (!Auth::check('default', $this->request)){
-			return $this->redirect('/users/login');
+			return $this->redirect('Users::login');
 		}
 
 		if ($this->request->data) {
@@ -57,6 +56,7 @@ class PostsController extends \lithium\action\Controller {
             $result = Posts::update($query, $conditions, array('atomic' => false));
         } 
 
+			#TODO:Don't use path
             $this->redirect("/posts/view/$id/");
 			
         } 

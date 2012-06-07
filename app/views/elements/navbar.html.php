@@ -31,6 +31,9 @@
 						<a href="/users/add/">Add User</a>
 					</li>
 					<li class="">
+						<a href="/users/">Users</a>
+					</li>
+					<li class="">
 						<a href="/login">Login</a>
 					</li>
 					<li class="">

@@ -1,3 +1,6 @@
 <?php foreach($users as $user){ ?>
-    <div><a href="<?=$user->website ?>" target="_blank"><?=$user->username ?></a></div>
+	<article>
+		<? #TODO: No hard paths ?>
+		<?=$this->html->link($user->username,'/users/view/'.$user->_id) ?>
+	</article>
 <?php } ?>
