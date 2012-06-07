@@ -11,7 +11,7 @@
 <head>
 	<?=$this->html->charset()?>
 	<title><?=$this->title()?></title>
-	<?=$this->html->style(array('bootstrap.min','bootstrap-responsive.min')); ?>
+	<?=$this->html->style(array('bootstrap.min','bootstrap-responsive.min','app')); ?>
 	<?=$this->html->script('head.js')?>
 	<?=$this->scripts()?>
 	<?=$this->html->link('Icon', null, array('type' => 'icon'))?>
