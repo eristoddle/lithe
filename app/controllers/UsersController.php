@@ -25,9 +25,9 @@ class UsersController extends \lithium\action\Controller {
 		
 		$register = NULL;
 		
-		if (!Auth::check('default', $this->request)){
+/* 		if (!Auth::check('default', $this->request)){
 			return $this->redirect('Users::login');
-		}
+		} */
 
 		if ( $this->request->data ){
 			$register = Users::create($this->request->data);

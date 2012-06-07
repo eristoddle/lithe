@@ -22,9 +22,6 @@
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li class="">
-						<a href="/">Home</a>
-					</li>
-					<li class="">
 						<a href="/posts/add/">Add Post</a>
 					</li>
 					<li class="">
