@@ -51,6 +51,9 @@ class PostsController extends \lithium\action\Controller {
 	public function view($id=null) {
 		if($id){
 			$post = Posts::first($id);
+			#TODO: Find where to implode tags
+			#$this->processData($post);
+			#$post->tags = implode(",", $post->tags);
 			return compact('post');
 		}
 		$this->redirect(array('Posts::index'));

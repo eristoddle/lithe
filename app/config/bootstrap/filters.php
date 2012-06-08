@@ -11,7 +11,6 @@ use lithium\util\collection\Filters;
 use lithium\analysis\Logger;
 use lithium\data\Connections;
 
-#This is not working here
 Users::applyFilter('save', function($self, $params, $chain) {
 
     if ($params['data']) {
@@ -27,7 +26,6 @@ Users::applyFilter('save', function($self, $params, $chain) {
 	
 });
 
-#This is not working here
 Posts::applyFilter('save', function($self, $params, $chain) {
 
     if ($params['data']) {
@@ -42,6 +40,14 @@ Posts::applyFilter('save', function($self, $params, $chain) {
     return $chain->next($self, $params, $chain);
 	
 });
+
+#TODO: Find where to implode tags for edit and view
+/* Posts::applyFilter('view', function($self, $params, $chain) {
+	
+}); */
+
+#TODO: Blog post slugs
+#http://blog.amalraghav.com/lithium-filters-a-practical-example/
 
 /**
  * improved authentication using filters

@@ -7,8 +7,6 @@ use lithium\security\Auth;
 use lithium\storage\Session;
 
 class UsersController extends \lithium\action\Controller {
-
-	//public $publicActions = array('login','logout');
     
     public function index() {
         $users = Users::all();
@@ -29,10 +27,10 @@ class UsersController extends \lithium\action\Controller {
 		
 		$register = NULL;
 		
-/*  		if (!Auth::check('default', $this->request)){
+  		if (!Auth::check('default', $this->request)){
 			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
-		} */
+		}
 
 		if ( $this->request->data ){
 			$register = Users::create($this->request->data);
@@ -48,8 +46,6 @@ class UsersController extends \lithium\action\Controller {
 	}
 	
 	public function edit($id=null){
-	
-		#TODO: Edit User not hashing password
 	
 		if (!Auth::check('default', $this->request)){
 			Session::write('message', 'Please Login');
@@ -72,8 +68,6 @@ class UsersController extends \lithium\action\Controller {
 		return compact('user');
 	}
 	
-	#TODO: Make Login and Logout Filters - See Steve's code
-	#And http://dev.lithify.me/drafts/source/en/02_lithium_basics/02_filters.wiki
 	public function login() {
 		if (Auth::check('default', $this->request)){
 			Session::write('message', 'Login success');

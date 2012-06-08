@@ -36,16 +36,6 @@ class Users extends \lithium\data\Model {
 		});
 	}
 	
-/* 	public static function passwordHash() {
-	
-	#http://www.jblotus.com/2011/08/27/understanding-filters-in-lithium-php/
-	
-	return static::_filter(__FUNCTION__, array(), function() {
-		return 'foo';
-    });
-	
-	} */
-	
  	public function full_name($record) {
 		return "{$record->firstname} {$record->lastname}";
     } 

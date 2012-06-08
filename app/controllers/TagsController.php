@@ -1,5 +1,5 @@
 <?php
-#TODO: Add published value, add desc, add pagination
+#TODO: Find where to implode tags
 
 namespace app\controllers;
 
