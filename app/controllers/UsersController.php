@@ -29,10 +29,10 @@ class UsersController extends \lithium\action\Controller {
 		
 		$register = NULL;
 		
- 		if (!Auth::check('default', $this->request)){
+/*  		if (!Auth::check('default', $this->request)){
 			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
-		}
+		} */
 
 		if ( $this->request->data ){
 			$register = Users::create($this->request->data);
@@ -80,9 +80,8 @@ class UsersController extends \lithium\action\Controller {
 			return $this->redirect('/');
 		}
 		if ($this->request->data){
-			$noauth = true;
+			Session::write('message', 'Incorrect Username/Password Combination');
 		}
-		return compact('noauth');
 	}
 	
 	public function logout() {

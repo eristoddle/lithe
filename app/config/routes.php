@@ -69,6 +69,7 @@ if (!Environment::is('production')) {
  * If you're using a document-oriented database, such as CouchDB or MongoDB, or another type of
  * database which uses 24-character hexidecimal values as primary keys, uncomment the routes below.
  */
+ #TODO: This number should be 24. Has to do with args vs params I am accessing in controller.
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{25}}.{:type}', array('id' => null));
 Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{25}}');
 

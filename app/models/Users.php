@@ -12,13 +12,14 @@ class Users extends \lithium\data\Model {
         'password' => array(
             array('notEmpty', 'message'=>'You must include a password.')
         ),
-		'email' => array(
+//TODO: This breaks adding user when there is no email
+/* 		'email' => array(
 			array('notEmpty', 'message' => 'An Email Address for the user is required'),
 			array('email', 'message' => 'A valid Email Address is required')
-		)
-    );
+		)*/
+    ); 
 	
-	public static function __init(array $options = array()) {
+ 	public static function __init(array $options = array()) {
         
 		parent::__init($options);
 		
@@ -35,9 +36,19 @@ class Users extends \lithium\data\Model {
 		});
 	}
 	
-	public function full_name($record) {
+/* 	public static function passwordHash() {
+	
+	#http://www.jblotus.com/2011/08/27/understanding-filters-in-lithium-php/
+	
+	return static::_filter(__FUNCTION__, array(), function() {
+		return 'foo';
+    });
+	
+	} */
+	
+ 	public function full_name($record) {
 		return "{$record->firstname} {$record->lastname}";
-    }
+    } 
 	
 	public $hasMany = array('Posts' => array(
 	'key' => array('id' => 'post_id')
@@ -45,18 +56,18 @@ class Users extends \lithium\data\Model {
 
 }
 
-Users::applyFilter('save', function($self, $params, $chain){
+/* Users::applyFilter('save', function($self, $params, $chain){
     
     $record = $params['entity'];
     
-	//if(!$record->id && !empty($record->password)){
-    if(!empty($record->password)){
+	if(!$record->id && !empty($record->password)){
         $record->password = Password::hash($record->password);
     }
 
     $params['entity'] = $record;
 
     return $chain->next($self, $params, $chain);
-});
+	
+}); */
 
 ?>
