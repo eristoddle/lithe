@@ -20,6 +20,7 @@ class PostsController extends \lithium\action\Controller {
 		$success = false;
 		
 		if (!Auth::check('default', $this->request)){
+			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
 		}
 
@@ -37,6 +38,7 @@ class PostsController extends \lithium\action\Controller {
 	public function edit($id=null) {
 		
 		if (!Auth::check('default', $this->request)){
+			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
 		}
 		

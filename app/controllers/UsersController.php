@@ -7,6 +7,8 @@ use lithium\security\Auth;
 use lithium\storage\Session;
 
 class UsersController extends \lithium\action\Controller {
+
+	//public $publicActions = array('login','logout');
     
     public function index() {
         $users = Users::all();
@@ -28,14 +30,15 @@ class UsersController extends \lithium\action\Controller {
 		$register = NULL;
 		
  		if (!Auth::check('default', $this->request)){
+			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
 		}
 
 		if ( $this->request->data ){
 			$register = Users::create($this->request->data);
 			if ( $register->save() ){
-				$this->redirect('Users::index');
 				Session::write('message', 'User added');
+				$this->redirect('Users::index');
 			}
 
 		}
@@ -49,19 +52,21 @@ class UsersController extends \lithium\action\Controller {
 		#TODO: Edit User not hashing password
 	
 		if (!Auth::check('default', $this->request)){
+			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
 		}
 		
 		$user = Users::find($id);
 		
 		if (!$user){
+			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
 		}
 
 		if (( $this->request->data )&& $user->save($this->request->data)){
 			$register = Users::create($this->request->data);
-			$this->redirect(array('Users::view', 'args' => array($user->id)));
 			Session::write('message', 'User saved');
+			$this->redirect(array('Users::view', 'args' => array($user->id)));
 		}
 
 		return compact('user');
@@ -71,6 +76,7 @@ class UsersController extends \lithium\action\Controller {
 	#And http://dev.lithify.me/drafts/source/en/02_lithium_basics/02_filters.wiki
 	public function login() {
 		if (Auth::check('default', $this->request)){
+			Session::write('message', 'Login success');
 			return $this->redirect('/');
 		}
 		if ($this->request->data){

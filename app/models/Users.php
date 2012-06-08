@@ -45,27 +45,12 @@ class Users extends \lithium\data\Model {
 
 }
 
-#TODO: Does This Belong HERE
-#TODO: A way not to copy and paste for save and edit
-//We call the applyFilter() method OUTSIDE the class to create our new filter rules
 Users::applyFilter('save', function($self, $params, $chain){
     
     $record = $params['entity'];
     
-    if(!$record->id && !empty($record->password)){
-        $record->password = Password::hash($record->password);
-    }
-
-    $params['entity'] = $record;
-
-    return $chain->next($self, $params, $chain);
-});
-
-Users::applyFilter('edit', function($self, $params, $chain){
-    
-    $record = $params['entity'];
-    
-    if(!$record->id && !empty($record->password)){
+	//if(!$record->id && !empty($record->password)){
+    if(!empty($record->password)){
         $record->password = Password::hash($record->password);
     }
 
