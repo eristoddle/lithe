@@ -8,7 +8,7 @@ use lithium\security\Auth;
 use lithium\security\Password;
 use lithium\util\collection\Filters;
 use lithium\analysis\Logger;
-use lithium\data\Connections
+use lithium\data\Connections;
 
 #This is not working here
 Users::applyFilter('save', function($self, $params, $chain) {

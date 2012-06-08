@@ -56,18 +56,4 @@ class Users extends \lithium\data\Model {
 
 }
 
-/* Users::applyFilter('save', function($self, $params, $chain){
-    
-    $record = $params['entity'];
-    
-	if(!$record->id && !empty($record->password)){
-        $record->password = Password::hash($record->password);
-    }
-
-    $params['entity'] = $record;
-
-    return $chain->next($self, $params, $chain);
-	
-}); */
-
 ?>
