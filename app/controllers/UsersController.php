@@ -1,8 +1,10 @@
 <?php
 namespace app\controllers;
 
-use lithium\security\Auth;
 use app\models\Users;
+
+use lithium\security\Auth;
+use lithium\storage\Session;
 
 class UsersController extends \lithium\action\Controller {
     
@@ -33,6 +35,7 @@ class UsersController extends \lithium\action\Controller {
 			$register = Users::create($this->request->data);
 			if ( $register->save() ){
 				$this->redirect('Users::index');
+				Session::write('message', 'User added');
 			}
 
 		}
@@ -58,6 +61,7 @@ class UsersController extends \lithium\action\Controller {
 		if (( $this->request->data )&& $user->save($this->request->data)){
 			$register = Users::create($this->request->data);
 			$this->redirect(array('Users::view', 'args' => array($user->id)));
+			Session::write('message', 'User saved');
 		}
 
 		return compact('user');

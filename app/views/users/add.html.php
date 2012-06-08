@@ -1,6 +1,3 @@
-<?php if($saved): ?>
-<h4>User <?=$user['username'] ?> created</h4>
-<?php endif; ?>
 <?=$this->form->create($user); ?>
     <?=$this->form->field('username'); ?>
     <?=$this->form->field('password',array('type'=>'password')); ?>

@@ -1,6 +1,3 @@
-<?php if($saved): ?>
-<h4>User <?=$user['username'] ?> edited</h4>
-<?php endif; ?>
 <h4> Edit User: <?=$user['username'] ?></h4>
 <?=$this->form->create($user); ?>
     <?//=$this->form->field('username'); ?>

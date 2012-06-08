@@ -1,11 +1,3 @@
-<?php
-/**
- * Lithium: the most rad php framework
- *
- * @copyright     Copyright 2012, Union of RAD (http://union-of-rad.org)
- * @license       http://opensource.org/licenses/bsd-license.php The BSD License
- */
-?>
 <!doctype html>
 <html>
 <head>
@@ -24,7 +16,15 @@
 			<?=$this->_render('element', 'header')?>
 		</header>
 		<div id="content">
-			<?//$this->sessionMessage->renderAll()?>
+		<?php
+			$session_flash_message = $this->session->message();
+			if ($session_flash_message) { ?>
+				<div class="alert alert-info">
+					<?=$session_flash_message ?>
+				</div>
+		<?
+			}
+		?>
 			<?=$this->content()?>
 		</div>
 		<footer id="footer">
@@ -38,7 +38,7 @@
 			"<?=$this->url('/js/bootstrap.min.js')?>",
 			"<?//=$this->url('/js/app.js')?>",
 			function() {
-				ich.grabTemplates(); //make sure, icanhaz bootstraps correctly.
+				ich.grabTemplates();
 			}
 		);
 	</script>

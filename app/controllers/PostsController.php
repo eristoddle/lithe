@@ -1,10 +1,10 @@
 <?php
-#TODO: Add published value, add desc, add pagination
-
 namespace app\controllers;
 
 use app\models\Posts;
+
 use lithium\security\Auth;
+use lithium\storage\Session;
 
 class PostsController extends \lithium\action\Controller {
 
@@ -29,8 +29,8 @@ class PostsController extends \lithium\action\Controller {
 			$new_data['tags'] = explode(",",$new_data['tags']);
 			$post = Posts::create($new_data);
 			$success = $post->save();
+			Session::write('message', 'Post added');
 		}
-		return compact('success');
 	}
 	
 	#TODO:Get this working
@@ -48,6 +48,7 @@ class PostsController extends \lithium\action\Controller {
 			$new_data['tags'] = explode(",",$new_data['tags']);
 			$post = Posts::create($new_data);
 			//$success = $post->save();
+			Session::write('message', 'Post saved');
 		}
 		return compact('post');
 	}
@@ -73,6 +74,9 @@ class PostsController extends \lithium\action\Controller {
             );
             $conditions = array('_id'=>$id);
             $result = Posts::update($query, $conditions, array('atomic' => false));
+			if ($result) {
+				Session::write('message', 'Comment added');
+			}
         } 
 
 			#TODO:Don't use path

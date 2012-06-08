@@ -10,10 +10,23 @@ I do plan on using and testing this project in the wild for active sites, once I
 - Authenticated users
 - Only authenticated users can add users or create posts
 - Twitter Bootstrap added
+- Added posts to home page
+- Tags page
 
 ##TODO
-- Remove framework index and add posts list here
 - Sidebar Tags
 - Sidebar Recent Posts
 - Pages
 - Pages menu in top bar
+- Post slugs
+- Author Profile and Authorship
+- Meta Tags
+- Post Status
+- Pagination
+- Better Auth
+- Complete Form Validation
+- Comment Moderation
+- Edit Posts
+- HTML and MD editor
+- Categories based on tag groups
+- Silo site structure

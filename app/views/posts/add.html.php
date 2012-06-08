@@ -5,9 +5,3 @@
 	<?=$this->form->field('created', array('type' => 'hidden','value' => date('Y-m-d H:i:s', time())))?>
     <?=$this->form->submit('Add Post', array('class' => 'btn btn-inverse'))?>
 <?=$this->form->end()?>
-
-<? if ($success): ?>
-	<div class="alert alert-success">
-		<p>Post Successfully Saved</p>
-	</div>
-<? endif; ?>
