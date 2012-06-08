@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Users;
+use app\models\Posts;
 
 use lithium\action\Dispatcher;
 use lithium\action\Response;
@@ -20,6 +21,22 @@ Users::applyFilter('save', function($self, $params, $chain) {
     
     if(!empty($params['entity']->password)) {
         $params['entity']->password = Password::hash($params['entity']->password);
+    }
+    
+    return $chain->next($self, $params, $chain);
+	
+});
+
+#This is not working here
+Posts::applyFilter('save', function($self, $params, $chain) {
+
+    if ($params['data']) {
+        $params['entity']->set($params['data']);
+        $params['data'] = array();
+    }
+    
+    if(!empty($params['entity']->tags)) {
+        $params['entity']->tags = explode(",",$params['entity']->tags);
     }
     
     return $chain->next($self, $params, $chain);

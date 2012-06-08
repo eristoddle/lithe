@@ -25,16 +25,12 @@ class PostsController extends \lithium\action\Controller {
 		}
 
 		if ($this->request->data) {
-			#TODO: I am pretty sure this is not the right way and need to trim
-			$new_data = &$this->request->data;			
-			$new_data['tags'] = explode(",",$new_data['tags']);
-			$post = Posts::create($new_data);
+			$post = Posts::create($this->request->data);
 			$success = $post->save();
 			Session::write('message', 'Post added');
 		}
 	}
 	
-	#TODO:Get this working
 	public function edit($id=null) {
 		
 		if (!Auth::check('default', $this->request)){
@@ -45,11 +41,8 @@ class PostsController extends \lithium\action\Controller {
 		$post = Posts::find($id);
 
 		if (( $this->request->data )&& $post->save($this->request->data)) {
-			#TODO: I am pretty sure this is not the right way and need to trim
-			$new_data = &$this->request->data;			
-			$new_data['tags'] = explode(",",$new_data['tags']);
-			$post = Posts::create($new_data);
-			//$success = $post->save();
+			$post = Posts::create($this->request->data);
+			$success = $post->save();
 			Session::write('message', 'Post saved');
 		}
 		return compact('post');
