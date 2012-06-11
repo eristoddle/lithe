@@ -10,7 +10,8 @@ use app\models\Posts;
 
 class TagCloud extends \lithium\template\Helper {
 
-	function __gettags() {
+	function __alltags() {
+		#TODO: Better way to get unique list through MongoDB query?
 		$result = Posts::find('all', array(
 				'fields' => array('tags')
 		));		
@@ -23,7 +24,7 @@ class TagCloud extends \lithium\template\Helper {
 
 	public function cloud() {
 		$r_tags = "";
-		foreach ($this->__gettags() as $t) {
+		foreach ($this->__alltags() as $t) {
 			$t = $this->escape($t);
 			$r_tags .=  '<li><a href="/tags/view/'.$t.'">'.$t.'</a></li>';
 		}

@@ -11,7 +11,7 @@ class PostsController extends \lithium\action\Controller {
     public function index() {
 		$posts = Posts::all(array('order' => array('created' => 'DESC')));
 		#Docs with examples on doing this are hard to find
-		#Write about doing this
+		#Write about doing this: Setting the layout in controller
 		$this->_render['layout'] = 'home';
         return compact('posts');
     }
