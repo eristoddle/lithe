@@ -122,6 +122,6 @@ Libraries::add('app', array('default' => true));
  */
 // Libraries::add('li3_docs');
 Libraries::add('li3_bootstrap');
-Libraries::add('li3_partials');
+//Libraries::add('li3_partials');
 Libraries::add('li3_paginate');
 ?>

@@ -34,9 +34,7 @@ class PostWidget extends \lithium\template\Helper {
 		$r_posts = "";
 		
 		foreach ($this->__recent_posts(10) as $i => $p) {
-			//$p = $this->escape($p);
 			$r_posts .=  '<li><a href="/posts/view/'.$i.'">'.$p.'</a></li>';
-			//$r_posts .= $p;
 		}
 		
 		return $r_posts;

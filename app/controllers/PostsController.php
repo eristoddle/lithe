@@ -9,11 +9,16 @@ use lithium\storage\Session;
 class PostsController extends \lithium\action\Controller {
 
     public function index() {
-		$posts = Posts::all(array('order' => array('created' => 'DESC')));
+		/*Paginate helper*/
+		$limit = 5;
+		$page = $this->request->page ?: 1;
+		$order = array('created' => 'DESC');
+		$total = Posts::count();
+		$posts = Posts::all(compact('order','limit','page'));
 		#Docs with examples on doing this are hard to find
 		#Write about doing this: Setting the layout in controller
 		$this->_render['layout'] = 'home';
-        return compact('posts');
+		return compact('posts', 'total', 'page', 'limit');
     }
 	
 	public function add() {

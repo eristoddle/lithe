@@ -4,6 +4,8 @@
 Description: Lithium Helper for Tags on Sidebar
 */
 
+#TODO: Is TagCloud the best name for this Helper?
+
 namespace app\extensions\helper;
 
 use app\models\Posts;
@@ -31,6 +33,21 @@ class TagCloud extends \lithium\template\Helper {
 		
 		return $r_tags;
 	
+	}
+	
+	public function tags_to_string($tags) {
+		$html = "";
+		$count = 0;
+		foreach( $tags as $tag ){
+			if( $count==0 ){
+				$count++;
+				$html = $tag;
+				continue;
+			}
+			$html .= "," . trim( $tag );
+
+		}
+		return $html;
 	}
 
 }

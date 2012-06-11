@@ -8,3 +8,4 @@
     <p><?=$post->body ?></p>
 </article>
 <? endforeach; ?>
+<?=$this->BootstrapPaginator->paginate(); ?>

@@ -24,6 +24,10 @@ use lithium\core\Environment;
 Router::connect('/login', 'Users::login');
 Router::connect('/logout', 'Users::logout');
 
+/*Pagination helper*/
+Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}');
+Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}/{:args}');
+
 /**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,
  * its action called `view()`, and we pass a param to select the view file

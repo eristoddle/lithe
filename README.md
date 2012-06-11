@@ -12,10 +12,11 @@ I do plan on using and testing this project in the wild for active sites, once I
 - Twitter Bootstrap added
 - Added posts to home page
 - Tags page
-
-##TODO
 - Sidebar Tags
 - Sidebar Recent Posts
+- Edit Posts
+
+##TODO
 - Pages
 - Pages menu in top bar
 - Post slugs
@@ -26,7 +27,6 @@ I do plan on using and testing this project in the wild for active sites, once I
 - Better Auth
 - Complete Form Validation
 - Comment Moderation
-- Edit Posts
 - HTML and MD editor
 - Categories based on tag groups
 - Silo site structure
