@@ -1,8 +1,5 @@
 <?php
 
-use app\models\Users;
-use app\models\Posts;
-
 use lithium\action\Dispatcher;
 use lithium\action\Response;
 use lithium\security\Auth;
@@ -10,44 +7,6 @@ use lithium\security\Password;
 use lithium\util\collection\Filters;
 use lithium\analysis\Logger;
 use lithium\data\Connections;
-
-Users::applyFilter('save', function($self, $params, $chain) {
-
-    if ($params['data']) {
-        $params['entity']->set($params['data']);
-        $params['data'] = array();
-    }
-    
-    if(!empty($params['entity']->password)) {
-        $params['entity']->password = Password::hash($params['entity']->password);
-    }
-    
-    return $chain->next($self, $params, $chain);
-	
-});
-
-Posts::applyFilter('save', function($self, $params, $chain) {
-
-    if ($params['data']) {
-        $params['entity']->set($params['data']);
-        $params['data'] = array();
-    }
-    
-    if(!empty($params['entity']->tags)) {
-        $params['entity']->tags = explode(",",$params['entity']->tags);
-    }
-    
-    return $chain->next($self, $params, $chain);
-	
-});
-
-#TODO: Find where to implode tags for edit and view
-/* Posts::applyFilter('view', function($self, $params, $chain) {
-	
-}); */
-
-#TODO: Blog post slugs
-#http://blog.amalraghav.com/lithium-filters-a-practical-example/
 
 /**
  * improved authentication using filters

@@ -10,7 +10,7 @@
 			<h4>Tags</h4>
 			<?php foreach($post->tags as $tag): ?>
 				<span class="label label-info"><?=$this->html->link($tag,'/tags/view/'.$tag) ?></span>
-		   <?php endforeach; ?>
+			<?php endforeach; ?>
 		</div>
 		<?php endif; ?>
 <article>

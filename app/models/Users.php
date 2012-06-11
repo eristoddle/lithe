@@ -46,4 +46,20 @@ class Users extends \lithium\data\Model {
 
 }
 
+/*Lazy loading password filter*/
+Users::applyFilter('app\models\Users', 'save', function($self, $params, $chain) {
+
+    if ($params['data']) {
+        $params['entity']->set($params['data']);
+        $params['data'] = array();
+    }
+    
+    if(!empty($params['entity']->password)) {
+        $params['entity']->password = Password::hash($params['entity']->password);
+    }
+    
+    return $chain->next($self, $params, $chain);
+	
+});
+
 ?>

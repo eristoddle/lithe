@@ -1,10 +1,10 @@
 <?php
 
  /**
-*Description:	
-*Lithium Form Helper for Twitter Bootstrap
-*Public Clone URL:	git://gist.github.com/2293441.git
- */
+Description:	
+Lithium Form Helper for Twitter Bootstrap
+Public Clone URL:	git://gist.github.com/2293441.git
+*/
 
 namespace app\extensions\helper;
 

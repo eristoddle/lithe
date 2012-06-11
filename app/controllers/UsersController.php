@@ -7,6 +7,9 @@ use lithium\security\Auth;
 use lithium\storage\Session;
 
 class UsersController extends \lithium\action\Controller {
+
+	/*Important to prevent redirect loop */
+	public $publicActions = array('login');
     
     public function index() {
         $users = Users::all();
