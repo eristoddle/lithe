@@ -9,8 +9,8 @@ use lithium\storage\Session;
 class PostsController extends \lithium\action\Controller {
 
     public function index() {
-		/*Paginate helper*/
-		$limit = 5;
+		/*BootstrapPaginator helper*/
+		$limit = 10;
 		$page = $this->request->page ?: 1;
 		$order = array('created' => 'DESC');
 		$total = Posts::count();
@@ -37,6 +37,8 @@ class PostsController extends \lithium\action\Controller {
 	}
 	
 	public function edit($id=null) {
+	
+		#TODO: This actually adds an edited copy of the post not a new post
 		
 		if (!Auth::check('default', $this->request)){
 			Session::write('message', 'Please Login');

@@ -15,6 +15,7 @@ I do plan on using and testing this project in the wild for active sites, once I
 - Sidebar Tags
 - Sidebar Recent Posts
 - Edit Posts
+- Pagination
 
 ##TODO
 - Pages
@@ -23,10 +24,10 @@ I do plan on using and testing this project in the wild for active sites, once I
 - Author Profile and Authorship
 - Meta Tags
 - Post Status
-- Pagination
 - Better Auth
 - Complete Form Validation
 - Comment Moderation
+- Fix route mongoid route hack from 25 back to 24?
 - HTML and MD editor
 - Categories based on tag groups
 - Silo site structure

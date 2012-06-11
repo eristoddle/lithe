@@ -1,7 +1,7 @@
 <?php
 
 /**
-*Description: Lithium Helper to extend Paginate helper
+*Description: Lithium Helper to extend Paginator helper
 */
 
 namespace app\extensions\helper;
@@ -19,13 +19,13 @@ class BootstrapPaginator extends \li3_paginate\extensions\helper\Paginator {
 			'showFirstLast' => true,
 			'showPrevNext' => true,
 			'showNumbers' => true,
-			'firstText' => "First",
+			'firstText' => "<<",
             'firstTextDisabled' => "",
-			'prevText' => "Prev",
+			'prevText' => "<",
 			'prevTextDisabled' => "",
-			'nextText' => "Next",
+			'nextText' => ">",
 			'nextTextDisabled' => "",
-			'lastText' => "Last",
+			'lastText' => ">>",
             'lastTextDisabled' => "",
 			'activeOpenTag' => '<li class="active">',
 			'openTag' => "<li>",

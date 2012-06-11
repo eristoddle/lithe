@@ -24,9 +24,14 @@ use lithium\core\Environment;
 Router::connect('/login', 'Users::login');
 Router::connect('/logout', 'Users::logout');
 
-/*Pagination helper*/
-Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}');
-Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}/{:args}');
+/*BootstrapPaginator helper*/
+/*Spent an hour trying to use the example version.
+Then replaced the : with a / and now it works
+*/
+/* Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}');
+Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}/{:args}'); */
+Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}');
+Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}/{:args}');
 
 /**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,

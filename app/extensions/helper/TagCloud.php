@@ -12,8 +12,8 @@ use app\models\Posts;
 
 class TagCloud extends \lithium\template\Helper {
 
+	#TODO: Better way to get unique list through MongoDB query?
 	function __alltags() {
-		#TODO: Better way to get unique list through MongoDB query?
 		$result = Posts::find('all', array(
 				'fields' => array('tags')
 		));		
@@ -23,7 +23,8 @@ class TagCloud extends \lithium\template\Helper {
 		}
 		return array_unique($tags);
 	}
-
+	
+	#TODO: Do I worry about hard urls in app/extension/helper?
 	public function cloud() {
 		$r_tags = "";
 		foreach ($this->__alltags() as $t) {
