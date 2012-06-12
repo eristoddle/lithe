@@ -34,6 +34,11 @@ Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}');
 Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}/{:args}');
 
 /**
+ * Post slugs
+ */
+Router::connect('/posts/{:slug:[A-Za-z0-9-]+}',array('Posts::view'));
+
+/**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,
  * its action called `view()`, and we pass a param to select the view file
  * to use (in this case, `/views/pages/home.html.php`; see `app\controllers\PagesController`

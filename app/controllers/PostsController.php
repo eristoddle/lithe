@@ -23,6 +23,7 @@ class PostsController extends \lithium\action\Controller {
     }
 
     public function add() {
+		
         $success = false;
 
         if ($this->request->data) {
@@ -34,7 +35,7 @@ class PostsController extends \lithium\action\Controller {
 
     public function edit() {
 
-        $post = Posts::find($this->request->params['id']);
+		$post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
 
         if (( $this->request->data )&& $post->save($this->request->data)) {
             Session::write('message', 'Post saved');
@@ -44,14 +45,14 @@ class PostsController extends \lithium\action\Controller {
 
     public function view() {
 		
-		$post = Posts::find($this->request->params['id']);
+		//$post = Posts::find($this->request->params['id']);
+		$post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
 		
 		if (!$post) {
 			Session::write('message', '404:Post not found');
 			return $this->redirect('/posts/');
 		}
 
-        $post = Posts::first($this->request->params['id']);
         return compact('post');
 		
     }
@@ -75,7 +76,7 @@ class PostsController extends \lithium\action\Controller {
             }
         }
 
-#TODO:Don't use path
+#TODO:Don't use path and use slugs
         $this->redirect("/posts/view/$id/");
 
     }

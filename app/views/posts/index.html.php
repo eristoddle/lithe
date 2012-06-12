@@ -2,7 +2,7 @@
 <article>
     <h2>
 		<? #TODO: No hard paths ?>
-        <?=$this->html->link($post->title,'/posts/view/'.$post->_id)?>
+        <?=$this->html->link($post->title,'/posts/'.$post->slug)?>
         </a>
     </h2>
     <p><?=$post->body ?></p>
