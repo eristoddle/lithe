@@ -7,6 +7,7 @@ use lithium\security\Password;
 use lithium\util\collection\Filters;
 use lithium\analysis\Logger;
 use lithium\data\Connections;
+use lithium\storage\Session;
 
 /**
  * improved authentication using filters
@@ -22,6 +23,7 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
         return $ctrl;
     }
     return function() {
+		Session::write('message', 'Please Login');
         return new Response(array('location' => '/users/login'));
     };
 });

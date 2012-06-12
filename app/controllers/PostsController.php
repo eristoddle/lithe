@@ -8,6 +8,8 @@ use lithium\storage\Session;
 
 class PostsController extends \lithium\action\Controller {
 
+	public $publicActions = array('index','view','comment');
+
     public function index() {
 		/*BootstrapPaginator helper*/
 		$limit = 10;
@@ -24,10 +26,10 @@ class PostsController extends \lithium\action\Controller {
 	public function add() {
 		$success = false;
 		
-		if (!Auth::check('default', $this->request)){
+		/* if (!Auth::check('default', $this->request)){
 			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
-		}
+		} */
 
 		if ($this->request->data) {
 			$post = Posts::create($this->request->data);
@@ -40,10 +42,10 @@ class PostsController extends \lithium\action\Controller {
 	
 		#TODO: This actually adds an edited copy of the post not a new post
 		
-		if (!Auth::check('default', $this->request)){
+		/*if (!Auth::check('default', $this->request)){
 			Session::write('message', 'Please Login');
 			return $this->redirect('Users::login');
-		}
+		}*/
 		
 		$post = Posts::find($id);
 

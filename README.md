@@ -18,6 +18,7 @@ I do plan on using and testing this project in the wild for active sites, once I
 - Pagination
 
 ##TODO
+- Auth blocking everything?
 - Pages
 - Pages menu in top bar
 - Post slugs
