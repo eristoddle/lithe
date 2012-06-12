@@ -28,7 +28,6 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - Author Profile and Authorship
 - Meta Tags
 - Post Status
-- Better Auth
 - Complete Form Validation
 - Comment Moderation
 - Fix route mongoid route hack from 25 back to 24?

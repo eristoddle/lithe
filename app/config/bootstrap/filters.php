@@ -13,6 +13,7 @@ use lithium\storage\Session;
  * improved authentication using filters
  * http://lithify.me/docs/manual/lithium-basics/filters.wiki
  */
+#TODO: Redirect to last page after login using sessions
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
     $ctrl = $chain->next($self, $params, $chain);
 
