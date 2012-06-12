@@ -33,3 +33,4 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - HTML and MD editor
 - Categories based on tag groups
 - Silo site structure
+- Site configuration using ali3

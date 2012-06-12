@@ -4,3 +4,4 @@ app/resources/tmp/*
 .*.sw[op]
 _gsdata_
 _gsdata_/*
+*.cmd
