@@ -3,6 +3,10 @@
 
 I do plan on using and testing this project in the wild for active sites, once I get everything working. In fact I will be using it before I have it finished as soon as I can edit and post. Tired of Wordpress and it's hugeness. I can get a lot of the functionality I need easily just simply switching to MongoDB instead of MySql and Lithium makes it easy.
 
+Progress is going pretty well. The learning curve with lithium is fast with speed bumps every now and then. But each speed bump makes you faster next time around and the learning curve is easier afterwards.
+
+After learning the base MVC struture of Lithium, digest filters and helpers. That was where most of my speed bumps came from.
+
 [Blog Post Here](http://eristoddle.github.com/lithium/2012/05/29/lithe-a-blog-using-the-lithium-framework/)
 
 ##DONE
@@ -18,7 +22,6 @@ I do plan on using and testing this project in the wild for active sites, once I
 - Pagination
 
 ##TODO
-- Auth blocking everything?
 - Pages
 - Pages menu in top bar
 - Post slugs
