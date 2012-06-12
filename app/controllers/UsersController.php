@@ -15,9 +15,9 @@ class UsersController extends \lithium\action\Controller {
         return compact('users');
     }
 
-    public function view($id=null) {
-        if ($id) {
-            $user = Users::first($id);
+    public function view() {
+        if ($this->request->params['id']) {
+            $user = Users::first($this->request->params['id']);
             return compact('user');
         }
         else {
@@ -42,9 +42,9 @@ class UsersController extends \lithium\action\Controller {
         return compact('register','user');
     }
 
-    public function edit($id=null) {
+    public function edit() {
 
-        $user = Users::find($id);
+        $user = Users::find($this->request->params['id']);
 
         if (!$user) {
             Session::write('message', 'Please Login');

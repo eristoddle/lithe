@@ -32,11 +32,9 @@ class PostsController extends \lithium\action\Controller {
         }
     }
 
-    public function edit($id=null) {
+    public function edit() {
 
-#TODO: This actually adds an edited copy of the post not a new post
-
-        $post = Posts::find($id);
+        $post = Posts::find($this->request->params['id']);
 
         if (( $this->request->data )&& $post->save($this->request->data)) {
             Session::write('message', 'Post saved');
@@ -44,16 +42,23 @@ class PostsController extends \lithium\action\Controller {
         return compact('post');
     }
 
-    public function view($id=null) {
-        if ($id) {
-            $post = Posts::first($id);
-            return compact('post');
-        }
-        $this->redirect(array('Posts::index'));
+    public function view() {
+		
+		$post = Posts::find($this->request->params['id']);
+		
+		if (!$post) {
+			Session::write('message', '404:Post not found');
+			return $this->redirect('/posts/');
+		}
+
+        $post = Posts::first($this->request->params['id']);
+        return compact('post');
+		
     }
 
-    public function comment($id=null) {
+    public function comment() {
         if (!is_null($this->request->data)) {
+			$id = $this->request->params['id'];
             $data = &$this->request->data;
             $query = array(
 				 '$push'=> array('comment'=>array(

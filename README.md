@@ -30,7 +30,6 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - Post Status
 - Complete Form Validation
 - Comment Moderation
-- Fix route mongoid route hack from 25 back to 24?
 - HTML and MD editor
 - Categories based on tag groups
 - Silo site structure
