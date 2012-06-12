@@ -1,4 +1,7 @@
 <article>
+	<?php //if (Auth::check('default', $this->request)): ?>
+		<a href="" class="btn btn-primary">Edit Post</a>
+	<?php //endif; ?>			
 	<h1><?=$post->title ?></h1>
 	<hr/>
 	<div class="post-body">

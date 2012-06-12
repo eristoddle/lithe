@@ -20,11 +20,11 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - Sidebar Recent Posts
 - Edit Posts
 - Pagination
+- Post Slugs
 
 ##TODO
 - Pages
 - Pages menu in top bar
-- Post slugs
 - Author Profile and Authorship
 - Meta Tags
 - Post Status
@@ -33,4 +33,5 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - HTML and MD editor
 - Categories based on tag groups
 - Silo site structure
+- Add salt to hashing
 - Site configuration using ali3

@@ -11,7 +11,9 @@ class Posts extends \lithium\data\Model {
 
 }
 
-/*Lazy loading tags filter*/
+#TODO: Should filters be combined?
+
+/*Lazy loading tags, slugs filter*/
 Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
 
     if ($params['data']) {
@@ -22,25 +24,13 @@ Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
     if (!empty($params['entity']->tags)) {
         $params['entity']->tags = explode(",",$params['entity']->tags);
     }
-
-    return $chain->next($self, $params, $chain);
-
-});
-
-/*Blog post slugs filter*/
-Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
 	
-	if ($params['data']) {
-        $params['entity']->set($params['data']);
-        $params['data'] = array();
-    }
-
-    if (!($params['entity']->exists())) {
+	if (!($params['entity']->exists())) {
         $slug = Inflector::slug($params['entity']->title);
         $count = Posts::find('count', array(
-                                 'fields' => array('id'),
-                                 'conditions' => array('slug' => array('like' => '/^(?:' . $slug . ')(?:-?)(?:\d?)$/i')),
-                             ));
+		'fields' => array('id'),
+		'conditions' => array('slug' => array('like' => '/^(?:' . $slug . ')(?:-?)(?:\d?)$/i')),
+		));
         $params['data']['slug'] = $slug . ($count ? "-" . (++$count) : '');
     }
 

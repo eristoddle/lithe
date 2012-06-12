@@ -21,8 +21,8 @@ use lithium\core\Environment;
 
 /**Shorten or redirect
 */
-Router::connect('/login', 'Users::login');
-Router::connect('/logout', 'Users::logout');
+Router::connect('/login', array('Users::login'));
+Router::connect('/logout', array('Users::logout'));
 
 /*BootstrapPaginator helper*/
 /*Spent an hour trying to use the example version.
@@ -36,6 +36,7 @@ Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}/{:args}');
 /**
  * Post slugs
  */
+Router::connect('/posts/add',array('Posts::add'));
 Router::connect('/posts/{:slug:[A-Za-z0-9-]+}',array('Posts::view'));
 
 /**
