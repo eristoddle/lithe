@@ -8,7 +8,7 @@ use lithium\storage\Session;
 
 class UsersController extends \lithium\action\Controller {
 
-    public $publicActions = array('login','index','view', 'add');
+    public $publicActions = array('login','index','view');
 
     public function index() {
         $users = Users::all();

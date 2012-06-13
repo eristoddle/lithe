@@ -39,13 +39,15 @@ class Users extends \lithium\data\Model {
 		});
 	}
 	
- 	public function full_name($record) {
+ 	public function fullName($record) {
 		return "{$record->firstname} {$record->lastname}";
     } 
 	
-	public $hasMany = array('Posts' => array(
-		'key' => array('id' => 'post_id')
-	));
+	public $hasMany = array(
+		'Posts' => array(
+			'key' => array('id' => 'post_id')
+		)
+	);
 
 }
 

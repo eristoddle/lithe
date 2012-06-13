@@ -22,7 +22,9 @@ class TagCloud extends \lithium\template\Helper {
 		$tags = array();
 		
 		foreach($result as $t){
-			$tags = array_merge($tags,$t->tags->to('array'));
+			if(is_object($t->tags)) {
+				$tags = array_merge($tags,$t->tags->to('array'));
+			}
 		}
 		
 		return array_unique($tags);

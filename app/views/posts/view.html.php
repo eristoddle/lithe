@@ -7,13 +7,13 @@
 	<div class="post-body">
 		<?=$post->body ?>
 	</div>
-		<?php if(isset($post->tags)): ?>
+		<?php if(!empty($post->tags)): ?>
 		<hr/>
 		<div class="tags">
 			<h4>Tags</h4>
-			<?php foreach($post->tags as $tag): ?>
-				<span class="label label-info"><?=$this->html->link($tag,'/tags/view/'.$tag) ?></span>
-			<?php endforeach; ?>
+				<?php foreach($post->tags as $tag): ?>
+					<span class="label label-info"><?=$this->html->link($tag,'/tags/view/'.$tag) ?></span>
+				<?php endforeach; ?>
 		</div>
 		<?php endif; ?>
 <article>
@@ -39,3 +39,9 @@
 		<?=$this->form->submit('Add Comment'); ?>
 	<?=$this->form->end(); ?>
 </div>
+<?php
+	/*Data Dump*/
+	echo '<pre>';
+	print_r( $post->data() );
+	echo '</pre>';
+?>

@@ -33,6 +33,9 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - Comment Moderation
 - HTML and MD editor
 - Categories based on tag groups
+    - Intersections of tags
+    - Bidirectional filterable tags
+    - Tag model for tag level attributes (sortable tags)
 - Silo site structure
 - Site configuration using ali3
 - Authorization levels

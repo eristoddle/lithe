@@ -50,7 +50,12 @@ class PostsController extends \lithium\action\Controller {
     public function view() {
 		
 		//$post = Posts::find($this->request->params['id']);
-		$post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
+		//$post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
+		$post = Posts::find('first', array(
+				'conditions'=> array('slug' => $this->request->slug),
+				'with'=>array('Users')
+			)
+		);
 		
 		if (!$post) {
 			Session::write('message', '404:Post not found');
@@ -66,12 +71,14 @@ class PostsController extends \lithium\action\Controller {
         if (!is_null($this->request->data)) {
 			$id = $this->request->params['id'];
             $data = &$this->request->data;
-            $query = array('$push'=> array('comment'=>array(
-												   'title'=>$data['title'],
-												   'contact'=>$data['contact'],
-												   'body'=>$data['body']
-												)
-										)
+            $query = array(
+				'$push'=> array(
+				'comment'=>array(
+								   'title'=>$data['title'],
+								   'contact'=>$data['contact'],
+								   'body'=>$data['body']
+								)
+				)
 			);
             $conditions = array('_id'=>$id);
             $result = Posts::update($query, $conditions, array('atomic' => false));
