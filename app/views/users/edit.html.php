@@ -1,4 +1,4 @@
-<h4> Edit User: <?=$user['username'] ?></h4>
+<h4> Edit User: <?=$user['username']; ?></h4>
 <?=$this->form->create($user); ?>
     <?//=$this->form->field('username'); ?>
     <?=$this->form->field('password',array('type'=>'password')); ?>

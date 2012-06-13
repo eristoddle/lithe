@@ -1,5 +1,4 @@
 <?php
-#TODO: Find where to implode tags
 
 namespace app\controllers;
 
@@ -22,11 +21,9 @@ class TagsController extends \lithium\action\Controller {
 	
 	public function view($tag=null) {
 		if($tag){
-			//Get a list of posts with the tag
 			$posts = Posts::find('all', array(
 				'conditions' => array('tags' => $tag)
 			));
-			//Send the retrieved post data to the view
 			return compact('posts');
 		}
 	}

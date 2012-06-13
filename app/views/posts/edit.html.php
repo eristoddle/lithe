@@ -5,7 +5,7 @@
 		'tags', 
 		array( 
 			'type' => 'array', 
-			'value' => $this->TagCloud->tags_to_string( $post->tags ), 
+			'value' => $this->TagCloud->tagsToString( $post->tags ), 
 			'class' => 'tags'
 		) 
 	);?>

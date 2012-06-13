@@ -12,7 +12,7 @@ use app\models\Posts;
 #i.e. path is wired, manually pulling out post _ids, etc.
 class PostWidget extends \lithium\template\Helper {
 
-	function __recent_posts($limit=10) {
+	function __recentPosts($limit=10) {
 	
 		$results = Posts::find('all',	array(
 			'order' => array('created' => 'DESC'),
@@ -29,11 +29,11 @@ class PostWidget extends \lithium\template\Helper {
 		
 	}
 
-	public function recent_posts_widget() {
+	public function recentPostsWidget() {
 	
 		$r_posts = "";
 		
-		foreach ($this->__recent_posts(10) as $i => $p) {
+		foreach ($this->__recentPosts(10) as $i => $p) {
 			$r_posts .=  '<li><a href="/posts/view/'.$i.'">'.$p.'</a></li>';
 		}
 		

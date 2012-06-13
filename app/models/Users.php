@@ -31,7 +31,7 @@ class Users extends \lithium\data\Model {
 			$conditions = array('username' => $value);
 			
 			if(isset($options["values"]["id"])) {
-					$conditions[] = "id != " . $options["values"]["id"];
+				$conditions[] = "id != " . $options["values"]["id"];
 			}
 			
 			return !Users::find('first', array('conditions' => $conditions));
@@ -44,7 +44,7 @@ class Users extends \lithium\data\Model {
     } 
 	
 	public $hasMany = array('Posts' => array(
-	'key' => array('id' => 'post_id')
+		'key' => array('id' => 'post_id')
 	));
 
 }
@@ -52,7 +52,7 @@ class Users extends \lithium\data\Model {
 /*Lazy loading password filter*/
 Filters::apply('app\models\Users', 'save', function($self, $params, $chain) {
 	
-	$salt = '$2a$04$U7qYPXYq2YBxqfHL8H2pte';	
+	$salt = Password::salt('bf', 12);	
 
     if ($params['data']) {
         $params['entity']->set($params['data']);

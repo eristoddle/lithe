@@ -1,10 +1,11 @@
 <?php
-namespace app\controllers;
 
-use app\models\Posts;
+namespace app\controllers;
 
 use lithium\security\Auth;
 use lithium\storage\Session;
+
+use app\models\Posts;
 
 class PostsController extends \lithium\action\Controller {
 
@@ -16,8 +17,8 @@ class PostsController extends \lithium\action\Controller {
         $order = array('created' => 'DESC');
         $total = Posts::count();
         $posts = Posts::all(compact('order','limit','page'));
-#Docs with examples on doing this are hard to find
-#Write about doing this: Setting the layout in controller
+		#Docs with examples on doing this are hard to find
+		#Write about doing this: Setting the layout in controller
         $this->_render['layout'] = 'home';
         return compact('posts', 'total', 'page', 'limit');
     }
@@ -31,6 +32,7 @@ class PostsController extends \lithium\action\Controller {
             $success = $post->save();
             Session::write('message', 'Post added');
         }
+		
     }
 
     public function edit() {
@@ -40,7 +42,9 @@ class PostsController extends \lithium\action\Controller {
         if (( $this->request->data )&& $post->save($this->request->data)) {
             Session::write('message', 'Post saved');
         }
+		
         return compact('post');
+		
     }
 
     public function view() {
@@ -58,17 +62,17 @@ class PostsController extends \lithium\action\Controller {
     }
 
     public function comment() {
+		
         if (!is_null($this->request->data)) {
 			$id = $this->request->params['id'];
             $data = &$this->request->data;
-            $query = array(
-				 '$push'=> array('comment'=>array(
-											   'title'=>$data['title'],
-											   'contact'=>$data['contact'],
-											   'body'=>$data['body']
-										   )
-								)
-			 );
+            $query = array('$push'=> array('comment'=>array(
+												   'title'=>$data['title'],
+												   'contact'=>$data['contact'],
+												   'body'=>$data['body']
+												)
+										)
+			);
             $conditions = array('_id'=>$id);
             $result = Posts::update($query, $conditions, array('atomic' => false));
             if ($result) {
@@ -76,7 +80,7 @@ class PostsController extends \lithium\action\Controller {
             }
         }
 
-#TODO:Don't use path and use slugs
+		#TODO:Don't use path and use slugs
         $this->redirect("/posts/view/$id/");
 
     }

@@ -37,6 +37,7 @@ class UsersController extends \lithium\action\Controller {
             }
 
         }
+		
         $user = $this->request->data;
 
         return compact('register','user');
@@ -58,6 +59,7 @@ class UsersController extends \lithium\action\Controller {
         }
 
         return compact('user');
+		
     }
 
     public function login() {

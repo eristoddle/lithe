@@ -11,8 +11,6 @@ class Posts extends \lithium\data\Model {
 
 }
 
-#TODO: Should filters be combined?
-
 /*Lazy loading tags, slugs filter*/
 Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
 
@@ -28,8 +26,8 @@ Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
 	if (!($params['entity']->exists())) {
         $slug = Inflector::slug($params['entity']->title);
         $count = Posts::find('count', array(
-		'fields' => array('id'),
-		'conditions' => array('slug' => array('like' => '/^(?:' . $slug . ')(?:-?)(?:\d?)$/i')),
+			'fields' => array('id'),
+			'conditions' => array('slug' => array('like' => '/^(?:' . $slug . ')(?:-?)(?:\d?)$/i')),
 		));
         $params['data']['slug'] = $slug . ($count ? "-" . (++$count) : '');
     }

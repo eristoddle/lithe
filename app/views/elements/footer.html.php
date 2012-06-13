@@ -1,4 +1,4 @@
 <hr />
 <footer class="row-fluid">
-    &copy; me <?=strftime("%Y")?>
+    &copy; <a href="http://www.stephanmiller.com">Stephan Miller</a> <?=strftime("%Y");?>
 </footer>
