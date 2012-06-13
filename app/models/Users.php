@@ -60,7 +60,6 @@ Filters::apply('app\models\Users', 'save', function($self, $params, $chain) {
     }
     
     if(!empty($params['entity']->password)) {
-        //$params['entity']->password = Password::hash($params['entity']->password);
 		$params['entity']->password = Password::hash($params['entity']->password, $salt);
     }
     

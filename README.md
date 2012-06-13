@@ -21,6 +21,7 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - Edit Posts
 - Pagination
 - Post Slugs
+- Add salt to hashing
 
 ##TODO
 - Pages
@@ -33,5 +34,5 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - HTML and MD editor
 - Categories based on tag groups
 - Silo site structure
-- Add salt to hashing
 - Site configuration using ali3
+- Authorization levels
