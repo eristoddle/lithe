@@ -8,3 +8,11 @@
 	<?=$this->form->field('last_name'); ?>
     <?=$this->form->submit('Edit User', array('class' => 'btn btn-inverse'));?>
 <?=$this->form->end(); ?>
+<?php
+	/*Data Dump*/
+	echo '<pre>';
+	//print_r($post->data());
+	print_r($user->data());
+	//print_r($this->session);
+	echo '</pre>';
+?>

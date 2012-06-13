@@ -42,6 +42,8 @@
 <?php
 	/*Data Dump*/
 	echo '<pre>';
-	print_r( $post->data() );
+	print_r($post->data());
+	//print_r($user->data());
+	//var_dump($this->session);
 	echo '</pre>';
 ?>

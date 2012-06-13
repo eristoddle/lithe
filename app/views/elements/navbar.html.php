@@ -36,6 +36,9 @@
 					<li class="">
 						<a href="/logout">Logout</a>
 					</li>
+					<li class="">
+						<a href="/docs">Docs</a>
+					</li>
 				</ul>
 			</div>
 		</div>
