@@ -42,18 +42,6 @@ Session::config(array(
 
 #TODO: Trying to add user_id to session
 #SEE https://github.com/pointlessjon/sphere/
-/*  Auth::config(array(
-			'default' => array(
-				'session' => array(
-					'options' => array(
-						'name' => 'default'
-					)
-				),
-				'adapter' => 'Form',
-				'model' => 'Users',
-				'fields' => array('username', 'password')
- 	)
- )); */
 
 Auth::config(array(
 		'default' => array(

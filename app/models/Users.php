@@ -54,7 +54,7 @@ class Users extends \lithium\data\Model {
 /*Lazy loading password filter*/
 Filters::apply('app\models\Users', 'save', function($self, $params, $chain) {
 	
-	$salt = Password::salt('bf', 12);	
+	$salt = Password::salt('bf', 6);	
 
     if ($params['data']) {
         $params['entity']->set($params['data']);
@@ -64,8 +64,6 @@ Filters::apply('app\models\Users', 'save', function($self, $params, $chain) {
     if(!empty($params['entity']->password)) {
 		$params['entity']->password = Password::hash($params['entity']->password, $salt);
     }
-	
-	//Session::write('username', $params['entity']->username);
     
     return $chain->next($self, $params, $chain);
 	

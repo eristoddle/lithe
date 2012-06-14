@@ -5,3 +5,4 @@ app/resources/tmp/*
 _gsdata_
 _gsdata_/*
 *.cmd
+moadmin.php

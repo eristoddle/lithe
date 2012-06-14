@@ -15,7 +15,7 @@
  * To enable password protection, uncomment below and then change the username => password
  * You can add as many users as needed, eg.: array('scott' => 'tiger', 'samantha' => 'goldfish', 'gene' => 'alpaca')
  */
-//$accessControl = array('scott' => 'tiger');
+$accessControl = array('naphets66' => 'trapeze');
 
 /**
  * Uncomment to restrict databases-access to just the databases added to the array below
