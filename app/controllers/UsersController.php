@@ -18,7 +18,6 @@ class UsersController extends \lithium\action\Controller {
     public function view() {
         if ($this->request->params['id']) {
             $user = Users::first($this->request->params['id']);
-            $user->fullname = Users::fullName($user);
             return compact('user');
         }
         else {
