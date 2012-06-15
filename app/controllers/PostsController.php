@@ -94,5 +94,4 @@ class PostsController extends \lithium\action\Controller {
 
 }
 
-
 ?>
