@@ -4,8 +4,10 @@ namespace app\controllers;
 
 use lithium\security\Auth;
 use lithium\storage\Session;
+use lithium\util\Set;
 
 use app\models\Posts;
+use app\models\Users;
 
 class PostsController extends \lithium\action\Controller {
 
@@ -37,7 +39,7 @@ class PostsController extends \lithium\action\Controller {
 
     public function edit() {
 
-		$post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
+        $post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
 
         if (( $this->request->data )&& $post->save($this->request->data)) {
             Session::write('message', 'Post saved');
@@ -49,7 +51,6 @@ class PostsController extends \lithium\action\Controller {
 
     public function view() {
 		
-		//$post = Posts::find($this->request->params['id']);
 		//$post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
 		$post = Posts::find('first', array(
 				'conditions'=> array('slug' => $this->request->slug),
@@ -61,6 +62,8 @@ class PostsController extends \lithium\action\Controller {
 			Session::write('message', '404:Post not found');
 			return $this->redirect('/posts/');
 		}
+                
+                $user = Posts::user($post);
 
         return compact('post');
 		

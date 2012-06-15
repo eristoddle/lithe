@@ -41,7 +41,7 @@ class Users extends \lithium\data\Model {
 	
  	public function fullName($record) {
 		return "{$record->firstname} {$record->lastname}";
-    } 
+        } 
 	
 	public $hasMany = array(
 		'Posts' => array(

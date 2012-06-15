@@ -9,6 +9,15 @@ use lithium\security\Auth;
 class Posts extends \lithium\data\Model {
 
     public $belongsTo = array('Users');
+    
+    protected $_user = null;
+    
+    public function user($record) {
+        if (!empty($record->_user)) {
+                return $record->_user;
+        }
+        return $record->_user = Users::find($record->user_id);
+    }
 
 }
 
@@ -40,6 +49,15 @@ Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
 	$params['data']['user_id'] = $user['_id'];
 
     return $chain->next($self, $params, $chain);
+
+});
+
+Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
+
+    if ($params['data']) {
+        $params['entity']->set($params['data']);
+        $params['data'] = array();
+    }
 
 });
 

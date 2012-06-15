@@ -1,7 +1,4 @@
-<article>
-	<?php //if (Auth::check('default', $this->request)): ?>
-		<a href="" class="btn btn-primary">Edit Post</a>
-	<?php //endif; ?>			
+<article>			
 	<h1><?=$post->title ?></h1>
 	<hr/>
 	<div class="post-body">
@@ -17,6 +14,9 @@
 		</div>
 		<?php endif; ?>
 <article>
+<hr/>
+<a href="" class="btn btn-primary">Edit Post</a> |
+<?=$this->html->link("The Name",'/users/view/'.$post->_user->_id) ?>
 <hr/>
 <div class="comments">
 	<h2>Comments</h2>
@@ -43,7 +43,5 @@
 	/*Data Dump*/
 	echo '<pre>';
 	print_r($post->data());
-	//print_r($user->data());
-	//var_dump($this->session);
 	echo '</pre>';
 ?>
