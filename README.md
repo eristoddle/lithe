@@ -39,3 +39,4 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - Silo site structure
 - Site configuration using ali3
 - Authorization levels
+- Unique user email

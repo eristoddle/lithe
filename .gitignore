@@ -6,3 +6,4 @@ _gsdata_
 _gsdata_/*
 *.cmd
 moadmin.php
+/nbproject/*
