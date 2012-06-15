@@ -15,8 +15,8 @@
 		<?php endif; ?>
 <article>
 <hr/>
-<a href="" class="btn btn-primary">Edit Post</a> |
-<?=$this->html->link("The Name",'/users/view/'.$post->_user->_id) ?>
+<?=$this->html->link($post->_user->fullname,'/users/view/'.$post->_user->_id) ?> | 
+<a href="" class="btn btn-primary">Edit Post</a>
 <hr/>
 <div class="comments">
 	<h2>Comments</h2>

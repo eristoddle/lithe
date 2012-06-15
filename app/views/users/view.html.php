@@ -1,6 +1,5 @@
 <h2><?=$user->username; ?></h2>
-<h2><?=$user->fullname; ?></h2>
-<a href="<?=$user->website; ?>" target="_blank"><?=$user->username; ?></a>
+<a href="<?=$user->website; ?>" target="_blank"><?=$user->fullname; ?></a>
 <?php
 	/*Data Dump*/
 	echo '<pre>';

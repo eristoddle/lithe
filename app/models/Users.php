@@ -40,7 +40,7 @@ class Users extends \lithium\data\Model {
 	}
 	
  	public function fullName($record) {
-		return "{$record->firstname} {$record->lastname}";
+		return "{$record->first_name} {$record->last_name}";
         } 
 	
 	public $hasMany = array(

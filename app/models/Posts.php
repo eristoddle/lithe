@@ -16,7 +16,9 @@ class Posts extends \lithium\data\Model {
         if (!empty($record->_user)) {
                 return $record->_user;
         }
-        return $record->_user = Users::find($record->user_id);
+        $_user = Users::find($record->user_id);
+        $_user->fullname = Users::fullName($_user);
+        return $record->_user = $_user;
     }
 
 }
