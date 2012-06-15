@@ -87,7 +87,7 @@ class PostsController extends \lithium\action\Controller {
             }
         }
 
-		#TODO:Don't use path and use slugs
+        //TODO:Don't use path and use slugs
         $this->redirect("/posts/view/$id/");
 
     }

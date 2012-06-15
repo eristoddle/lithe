@@ -8,7 +8,7 @@ namespace app\extensions\helper;
 
 use app\models\Posts;
 
-#TODO: Look this over for better ways to do things
+//TODO: Look this over for better ways to do things
 #i.e. path is wired, manually pulling out post _ids, etc.
 class PostWidget extends \lithium\template\Helper {
 

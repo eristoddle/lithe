@@ -40,7 +40,7 @@ Session::config(array(
  */
  use lithium\security\Auth;
 
-#TODO: Trying to add user_id to session
+//TODO: Trying to add user_id to session
 #SEE https://github.com/pointlessjon/sphere/
 
 Auth::config(array(
