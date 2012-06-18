@@ -46,6 +46,13 @@ Connections::add('default', array(
  	'database' => 'lithe_blog'
 ));
 
+//TODO: Can't get li3_users to work
+//Connections::add('li3_users', array(
+// 	'type' => 'MongoDb',
+// 	'host' => 'localhost',
+// 	'database' => 'lithe_blog'
+//));
+
 /**
  * Uncomment this configuration to use CouchDB as your default database.
  */

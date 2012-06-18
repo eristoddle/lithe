@@ -21,6 +21,11 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
     if (Auth::check('default')) {
         return $ctrl;
     }
+
+    //TODO: Can't get li3_users to work
+//    if (Auth::check('user')) {
+//        return $ctrl;
+//    }
 	
     if (isset($ctrl->publicActions) && in_array($params['request']->action, $ctrl->publicActions)) {
         return $ctrl;
@@ -28,7 +33,7 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
 	
     return function() {
 		Session::write('message', 'Please Login');
-        return new Response(array('location' => '/users/login'));
+        return new Response(array('location' => '/login'));
     };
 	
 });

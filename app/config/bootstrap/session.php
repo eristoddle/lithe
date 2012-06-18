@@ -14,11 +14,18 @@
  */
 use lithium\storage\Session;
 
-$name = basename(LITHIUM_APP_PATH);
 Session::config(array(
 	// 'cookie' => array('adapter' => 'Cookie', 'name' => $name),
 	'default' => array('adapter' => 'Php')
 ));
+
+//TODO: Can't get li3_users to work
+//Session::config(array(
+//    'cookie' => array('adapter' => 'Cookie'),
+//    'li3_user' => array('adapter' => 'Php'),
+//    'default' => array('adapter' => 'Php'),
+//    'cooldown' => array('adapter' => 'Php', 'expires' => 10)
+//));
 
 /**
  * Uncomment the lines below to enable forms-based authentication. This configuration will attempt
@@ -50,5 +57,24 @@ Auth::config(array(
 			'fields' => array('username', 'password')
 	)
 ));
+
+//TODO: Can't get li3_users to work
+// Auth::config(array(
+//	'user' => array(
+//		'session' => array(
+//			'options' => array(
+//				'name' => 'li3_user'
+//			)
+//		),
+//		'adapter' => 'Form',
+//		'model' => '\li3_users\models\User',
+//		'fields' => array('_id', 'password'),
+//		'validators' => array(
+//			'password' => function($submitted, $actual) {
+//				return \lithium\util\String::hash($submitted) == $actual;
+//			}
+//		)
+//	)
+//));
 
 ?>

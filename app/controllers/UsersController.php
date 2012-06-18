@@ -1,10 +1,10 @@
 <?php
 namespace app\controllers;
 
-use app\models\Users;
-
 use lithium\security\Auth;
 use lithium\storage\Session;
+
+use app\models\Users;
 
 class UsersController extends \lithium\action\Controller {
 
@@ -64,6 +64,8 @@ class UsersController extends \lithium\action\Controller {
 
     public function login() {
         if (Auth::check('default', $this->request)) {
+//TODO: Can't get li3_users to work
+//        if (Auth::check('user', $this->request)) {
             Session::write('message', 'Login success');
             return $this->redirect('/');
         }
@@ -74,6 +76,8 @@ class UsersController extends \lithium\action\Controller {
 
     public function logout() {
         Auth::clear('default');
+//TODO: Can't get li3_users to work
+//        Auth::clear('user');
         Session::write('message', 'Logout success');
         return $this->redirect('/');
     }
