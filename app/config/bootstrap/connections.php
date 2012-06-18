@@ -76,4 +76,41 @@ Connections::add('default', array(
 // 	'encoding' => 'UTF-8'
 // ));
 
+/**
+ * General info:
+ *		Embed this code in your lithium (li3) app.
+ *		At the end of the app\config\connections.php for example.
+ *
+ *		Uncomment the var_dump lines OR use the lithium Logger Class
+ *		Use/modify the first callback, if you just want to see the query array data.
+ *		Use the second callback for dumping the raw sql data.
+ *
+ * @author: 2011 weluse GmbH, Marc Schwering
+ */
+Connections::get("default")->applyFilter("read", function($self, $params, $chain) {
+	$response = $chain->next($self, $params, $chain);
+	if (is_a($params['query'], 'lithium\data\model\Query')) {
+		/**
+		 * dump the query-object-data as array:
+		 */
+		var_dump($params['query']->export($self));
+
+		/**
+		 * dump the result:
+		 */
+		var_dump($response->data());
+	} //
+    return $response;
+});
+
+
+//Connections::get('default')->applyFilter("_execute", function($self, $params, $chain) {
+//	$response = $chain->next($self, $params, $chain);
+//	/**
+//	 * dump the raw sql query:
+//	 */
+//	//var_dump($params['sql']);
+//    return $response;
+//});
+
 ?>

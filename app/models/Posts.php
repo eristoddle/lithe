@@ -54,13 +54,4 @@ Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
 
 });
 
-Filters::apply('app\models\Posts', 'save', function($self, $params, $chain) {
-
-    if ($params['data']) {
-        $params['entity']->set($params['data']);
-        $params['data'] = array();
-    }
-
-});
-
 ?>

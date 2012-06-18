@@ -28,14 +28,15 @@ class Users extends \lithium\data\Model {
 
         Validator::add('isUniqueUser', function ($value, $format, $options) {
 
-                    $conditions = array('username' => $value);
+            $conditions = array('username' => $value);
 
-                    if (isset($options["values"]["id"])) {
-                        $conditions[] = "id != " . $options["values"]["id"];
-                    }
+            if (isset($options["values"]["id"])) {
+                $conditions[] = "id != " . $options["values"]["id"];
+            }
 
-                    return !Users::find('first', array('conditions' => $conditions));
-                });
+            return !Users::find('first', array('conditions' => $conditions));
+            
+        });
     }
 
     public function fullName($record) {
@@ -56,17 +57,35 @@ class Users extends \lithium\data\Model {
 /* Lazy loading password filter */
 Filters::apply('app\models\Users', 'save', function($self, $params, $chain) {
 
-            $salt = Password::salt('bf', 6);
+    $salt = Password::salt('bf', 6);
 
-            if ($params['data']) {
-                $params['entity']->set($params['data']);
-                $params['data'] = array();
-            }
+    if ($params['data']) {
+        $params['entity']->set($params['data']);
+        $params['data'] = array();
+    }
 
-            if (!empty($params['entity']->password)) {
-                $params['entity']->password = Password::hash($params['entity']->password, $salt);
-            }
+    if (!empty($params['entity']->password)) {
+        $params['entity']->password = Password::hash($params['entity']->password, $salt);
+    }
 
-            return $chain->next($self, $params, $chain);
+    return $chain->next($self, $params, $chain);
+    
 });
+
+/* Lazy loading full name filter */
+//Filters::apply('app\models\Users', 'read', function($self, $params, $chain) {
+//
+//    if ($params['data']) {
+//        $params['entity']->set($params['data']);
+//        $params['data'] = array();
+//    }
+//
+//    if (!empty($params['entity']->fullname)) {
+//        $params['entity']->fullname = Users::fullName($self);
+//    }
+//
+//    return $chain->next($self, $params, $chain);
+//    
+//});
+
 ?>
