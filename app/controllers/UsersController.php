@@ -8,7 +8,7 @@ use app\models\Users;
 
 class UsersController extends \lithium\action\Controller {
 
-    public $publicActions = array('login','index','view');
+    public $publicActions = array('login','index','view','add');
 
     public function index() {
         $users = Users::all();

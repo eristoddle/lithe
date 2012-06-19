@@ -39,12 +39,12 @@ class Users extends \lithium\data\Model {
         });
     }
 
-    public function fullName($record) {
-        if (!empty($record->full_name)) {
-            return $record->full_name;
-        }
-        return $record->full_name = "{$record->first_name} {$record->last_name}";
-    }
+//    public function fullName($record) {
+//        if (!empty($record->full_name)) {
+//            return $record->full_name;
+//        }
+//        return $record->full_name = "{$record->first_name} {$record->last_name}";
+//    }
 
     public $hasMany = array(
         'Posts' => array(
@@ -54,7 +54,7 @@ class Users extends \lithium\data\Model {
 
 }
 
-/* Lazy loading password filter */
+/* Lazy loading password and fullname filter */
 Filters::apply('app\models\Users', 'save', function($self, $params, $chain) {
 
     $salt = Password::salt('bf', 6);
@@ -67,25 +67,11 @@ Filters::apply('app\models\Users', 'save', function($self, $params, $chain) {
     if (!empty($params['entity']->password)) {
         $params['entity']->password = Password::hash($params['entity']->password, $salt);
     }
+    
+    if (empty($params['entity']->full_name)) {
+        $params['entity']->full_name = $params['entity']->first_name." ".$params['entity']->last_name;
+    }
 
     return $chain->next($self, $params, $chain);
     
 });
-
-/* Lazy loading full name filter */
-//Filters::apply('app\models\Users', 'read', function($self, $params, $chain) {
-//
-//    if ($params['data']) {
-//        $params['entity']->set($params['data']);
-//        $params['data'] = array();
-//    }
-//
-//    if (!empty($params['entity']->fullname)) {
-//        $params['entity']->fullname = Users::fullName($self);
-//    }
-//
-//    return $chain->next($self, $params, $chain);
-//    
-//});
-
-?>

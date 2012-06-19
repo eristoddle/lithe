@@ -63,7 +63,7 @@ class PostsController extends \lithium\action\Controller {
 			return $this->redirect('/posts/');
 		}
                 
-                Posts::user($post);
+        Posts::user($post);
 
         return compact('post');
 		
