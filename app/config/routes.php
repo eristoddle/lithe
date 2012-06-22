@@ -36,6 +36,14 @@ Router::connect('/posts/{:slug:[A-Za-z0-9-]+}',array('Posts::view'));
 Router::connect('/posts/edit/{:slug:[A-Za-z0-9-]+}',array('Posts::edit'));
 
 /**
+ *Admin 
+ */
+Router::connect( "/admin", 							"Admin::index" );
+Router::connect( "/admin/{:model_slug}", 			"Admin::records" );
+Router::connect( "/admin/{:model_slug}/create", 	"Admin::entity" );
+Router::connect( "/admin/{:model_slug}/{:id}", 		"Admin::entity" );
+
+/**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,
  * its action called `view()`, and we pass a param to select the view file
  * to use (in this case, `/views/pages/home.html.php`; see `app\controllers\PagesController`

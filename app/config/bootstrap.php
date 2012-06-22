@@ -98,4 +98,5 @@ require __DIR__ . '/bootstrap/config.php';
  *filters 
  */
 require __DIR__ . '/bootstrap/filters.php';
+
 ?>
