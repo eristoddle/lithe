@@ -1,7 +1,4 @@
-<?php if (!count($configs)): ?>
-    <?php foreach($configs as $config): ?>
-        <p>
-            <?=$config->name; ?> : <?=$config->value; ?>
-        </p>
-    <?php endforeach; ?>
-<?php endif; ?>
+<p>
+    <strong>Name:</strong><?=$name; ?><br/>
+    <strong>Value:</strong><?=$value; ?>
+</p>

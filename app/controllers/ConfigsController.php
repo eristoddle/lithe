@@ -3,41 +3,46 @@
 namespace app\controllers;
 
 use app\models\Configs;
+use ali3\storage\Config;
 use lithium\action\DispatchException;
+use lithium\net\http\Route;
 
 class ConfigsController extends \lithium\action\Controller {
 
 	public function index() {
-		$configs = Configs::all();
+		$configs = Configs::all()->data();
 		return compact('configs');
 	}
 
 	public function view() {
-		$config = Configs::first($this->request->id);
-		return compact('config');
+        $name = $this->request->args[0];
+        $value = Config::read('default', $name);
+		return compact('name','value');
 	}
 
 	public function add() {
 		$config = Configs::create();
         
-        $name = $this->request;
+        //Good for debugging requests. Just compact debug.
+        //$debug = serialize($this->request);
 
-		if (($this->request->data) && Config::write('default', 'site_title', $newTitle)) {
-			return $this->redirect(array('Configs::view', 'args' => array($config->id)));
+		if (($this->request->data) && Config::write('default', $this->request->data['name'], $this->request->data['value'])) {
+			return $this->redirect(array('Configs::view', 'args' => array($this->request->data['name'])));
 		}
-		return compact('config','name');
+		return compact('config');
 	}
 
 	public function edit() {
-		$config = Configs::find($this->request->id);
+        $name = $this->request->args[0];
+        $value = Config::read('default', $name);
 
-		if (!$config) {
+		if (!$name) {
 			return $this->redirect('Configs::index');
 		}
-		if (($this->request->data) && $config->save($this->request->data)) {
-			return $this->redirect(array('Configs::view', 'args' => array($config->id)));
+		if (($this->request->data) && Config::write('default', $this->request->data['name'], $this->request->data['value'])) {
+			return $this->redirect(array('Configs::view', 'args' => array($this->request->data['name'])));
 		}
-		return compact('config');
+		return compact('name','value');
 	}
 
 	public function delete() {
@@ -45,7 +50,8 @@ class ConfigsController extends \lithium\action\Controller {
 			$msg = "Configs::delete can only be called with http:post or http:delete.";
 			throw new DispatchException($msg);
 		}
-		Configs::find($this->request->id)->delete();
+		//Configs::find($this->request->id)->delete();
+        Config::delete('default', $this->request->args[0]);
 		return $this->redirect('Configs::index');
 	}
 }
