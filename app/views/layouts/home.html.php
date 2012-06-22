@@ -21,13 +21,7 @@
 			</div>
 			<div class="span9">
 				<div id="content">
-				<?php
-					$session_flash_message = $this->session->message();
-					if ($session_flash_message): ?>
-						<div class="alert alert-info">
-							<?$session_flash_message ?>
-						</div>
-				<?php endif; ?>
+                    <?=$this->message->flash('Auth.message', array('class' => 'alert alert-info'));?>
 					<?=$this->content();?>
 				</div>
 			</div>

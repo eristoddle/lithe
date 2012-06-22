@@ -2,7 +2,7 @@
 	<h1><?=$post->title ?></h1>
 	<hr/>
 	<div class="post-body">
-		<?=$post->body ?>
+        <?=$this->markdown->display($post->body); ?>
 	</div>
 		<?php if(!empty($post->tags)): ?>
 		<hr/>
@@ -36,6 +36,13 @@
 		<?=$this->form->field('title');?>
 		<?=$this->form->field('contact');?>
 		<?=$this->form->field('body', array('type' => 'textarea'));?>
+        <?=$this->form->field( 
+            'post_slug', 
+            array( 
+                'type' => 'hidden', 
+                'value' => $post->slug
+            ) 
+        );?>
 		<?=$this->form->submit('Add Comment'); ?>
 	<?=$this->form->end(); ?>
 </div>

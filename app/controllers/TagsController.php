@@ -6,6 +6,8 @@ use app\models\Posts;
 use lithium\security\Auth;
 
 class TagsController extends \lithium\action\Controller {
+    
+    public $publicActions = array('index','view');
 
     public function index() {
         $result = Posts::find('all', array(

@@ -25,11 +25,6 @@ Router::connect('/login', array('Users::login'));
 Router::connect('/logout', array('Users::logout'));
 
 /*BootstrapPaginator helper*/
-/*Spent an hour trying to use the example version.
-Then replaced the : with a / and now it works
-*/
-/* Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}');
-Router::connect('/{:controller}/{:action}/page:{:page:[0-9]+}/{:args}'); */
 Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}');
 Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}/{:args}');
 
@@ -38,6 +33,7 @@ Router::connect('/{:controller}/{:action}/page/{:page:[0-9]+}/{:args}');
  */
 Router::connect('/posts/add',array('Posts::add'));
 Router::connect('/posts/{:slug:[A-Za-z0-9-]+}',array('Posts::view'));
+Router::connect('/posts/edit/{:slug:[A-Za-z0-9-]+}',array('Posts::edit'));
 
 /**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,

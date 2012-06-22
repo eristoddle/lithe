@@ -7,7 +7,8 @@ use lithium\security\Password;
 use lithium\util\collection\Filters;
 use lithium\analysis\Logger;
 use lithium\data\Connections;
-use lithium\storage\Session;
+
+use ali3\storage\Session;
 
 /**
  * improved authentication using filters

@@ -5,7 +5,7 @@
         <?=$this->html->link($post->title,'/posts/'.$post->slug)?>
         </a>
     </h2>
-    <p><?=$post->body ?></p>
+    <p><?=$this->markdown->display($post->body); ?></p>
 </article>
 <? endforeach; ?>
 <?/*BootstrapPaginator helper*/?>

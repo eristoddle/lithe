@@ -3,11 +3,12 @@
 namespace app\controllers;
 
 use lithium\security\Auth;
-use lithium\storage\Session;
 use lithium\util\Set;
 
 use app\models\Posts;
 use app\models\Users;
+
+use ali3\storage\Session;
 
 class PostsController extends \lithium\action\Controller {
 
@@ -32,7 +33,7 @@ class PostsController extends \lithium\action\Controller {
         if ($this->request->data) {
             $post = Posts::create($this->request->data);
             $success = $post->save();
-            Session::write('message', 'Post added');
+            Session::write('Auth.message', 'Post added');
         }
 		
     }
@@ -42,7 +43,7 @@ class PostsController extends \lithium\action\Controller {
         $post = Posts::find('first', array('conditions' => array('slug' => $this->request->slug)));
 
         if (( $this->request->data )&& $post->save($this->request->data)) {
-            Session::write('message', 'Post saved');
+            Session::write('Auth.message', 'Post saved');
         }
 		
         return compact('post');
@@ -59,7 +60,7 @@ class PostsController extends \lithium\action\Controller {
 		);
 		
 		if (!$post) {
-			Session::write('message', '404:Post not found');
+			Session::write('Auth.message', '404:Post not found');
 			return $this->redirect('/posts/');
 		}
                 
@@ -86,12 +87,12 @@ class PostsController extends \lithium\action\Controller {
             $conditions = array('_id'=>$id);
             $result = Posts::update($query, $conditions, array('atomic' => false));
             if ($result) {
-                Session::write('message', 'Comment added');
+                Session::write('Auth.message', 'Comment added');
+                //TODO:Don't use path and use slugs plus don't work none
+                return $this->redirect("/posts/".$data['post_slug']);
+                //$this->redirect(array('Posts::view', 'args' => array($data['slug'])));
             }
         }
-
-        //TODO:Don't use path and use slugs
-        $this->redirect("/posts/view/$id/");
 
     }
 

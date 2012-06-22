@@ -16,13 +16,7 @@
 			<?=$this->_render('element', 'header');?>
 		</header>
 		<div id="content">
-		<?php
-			$session_flash_message = $this->session->message();
-			if ($session_flash_message): ?>
-				<div class="alert alert-info">
-					<?=$session_flash_message; ?>
-				</div>
-			<?php endif; ?>
+            <?=$this->message->flash('Auth.message', array('class' => 'alert alert-info'));?>
 			<?=$this->content();?>
 		</div>
 		<footer id="footer">

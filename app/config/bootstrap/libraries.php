@@ -118,22 +118,23 @@ Libraries::add('lithium');
 Libraries::add('app', array('default' => true));
 
 /**
- * Lithium Docs Plugin
- * 
+ * Lithium Docs library
  */
 Libraries::add('li3_docs');
 
 /**
- * Lithium Paginate Plugin
- *
+ * Lithium Paginate library
  */
 Libraries::add('li3_paginate');
 
-//TODO: Can't get li3_users to work
 /**
- * Lithium Users Plugin
- *
+ * Lithium Markdown library
  */
-//Libraries::add('li3_users');
+Libraries::add('li3_markdown');
+
+/**
+ * Lithium ali3 library
+ */
+Libraries::add('ali3');
 
 ?>

@@ -87,21 +87,21 @@ Connections::add('default', array(
  *
  * @author: 2011 weluse GmbH, Marc Schwering
  */
-//Connections::get("default")->applyFilter("read", function($self, $params, $chain) {
-//	$response = $chain->next($self, $params, $chain);
-//	if (is_a($params['query'], 'lithium\data\model\Query')) {
-//		/**
-//		 * dump the query-object-data as array:
-//		 */
-//		var_dump($params['query']->export($self));
-//
-//		/**
-//		 * dump the result:
-//		 */
-//		//var_dump($response->data());
-//	} //
-//    return $response;
-//});
+Connections::get("default")->applyFilter("read", function($self, $params, $chain) {
+	$response = $chain->next($self, $params, $chain);
+	if (is_a($params['query'], 'lithium\data\model\Query')) {
+		/**
+		 * dump the query-object-data as array:
+		 */
+		//var_dump($params['query']->export($self));
+
+		/**
+		 * dump the result:
+		 */
+		//var_dump($response->data());
+	} //
+    return $response;
+});
 
 
 //Connections::get('default')->applyFilter("_execute", function($self, $params, $chain) {

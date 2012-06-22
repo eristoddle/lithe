@@ -6,6 +6,8 @@ use lithium\util\collection\Filters;
 use lithium\util\Inflector;
 use lithium\security\Auth;
 
+use ali3\storage\Session;
+
 class Posts extends \lithium\data\Model {
 
     public $belongsTo = array('Users');
@@ -17,8 +19,25 @@ class Posts extends \lithium\data\Model {
                 return $record->_user;
         }
         $_user = Users::find($record->user_id);
-        //Users::fullName($_user);
         return $record->_user = $_user;
+    }
+    
+    //TODO: Set flash messages from Validator
+    function set_flash_message($message){
+   
+        if(is_array($message)){
+            $display = '<ul>';
+            foreach($message as $key=>$val){
+                foreach($val as $entry){
+                    $display.='<li>'.$entry.'</li>';
+                } 
+            }
+            $display.='</ul>';
+        }
+        else {
+            $display = $message;
+        }
+        Session::write('Auth.message', $display);
     }
 
 }

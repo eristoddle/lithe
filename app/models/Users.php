@@ -6,11 +6,14 @@ use lithium\security\Password;
 use lithium\util\Validator;
 use lithium\util\collection\Filters;
 
+use ali3\storage\Session;
+
 class Users extends \lithium\data\Model {
 
     public $validates = array(
         'username' => array(
-            array('notEmpty', 'message' => 'You must include a username.')
+            array('notEmpty', 'message' => 'You must include a username.'),
+            array('isUniqueUser', 'message'=>'Username already taken'),
         ),
         'password' => array(
             array('notEmpty', 'message' => 'You must include a password.')
@@ -39,18 +42,30 @@ class Users extends \lithium\data\Model {
         });
     }
 
-//    public function fullName($record) {
-//        if (!empty($record->full_name)) {
-//            return $record->full_name;
-//        }
-//        return $record->full_name = "{$record->first_name} {$record->last_name}";
-//    }
-
     public $hasMany = array(
         'Posts' => array(
             'key' => array('id' => 'post_id')
         )
     );
+    
+    //TODO: Set flash messages from Validator
+    function set_flash_message($message){
+   
+        if(is_array($message)){
+            $display = '<ul>';
+            foreach($message as $key=>$val){
+                foreach($val as $entry){
+                    $display.='<li>'.$entry.'</li>';
+                } 
+            }
+            $display.='</ul>';
+        }
+        else {
+            $display = $message;
+        }
+        Session::write('Auth.message', $display);
+    }
+
 
 }
 

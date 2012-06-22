@@ -2,13 +2,14 @@
 namespace app\controllers;
 
 use lithium\security\Auth;
-use lithium\storage\Session;
 
 use app\models\Users;
 
+use ali3\storage\Session;
+
 class UsersController extends \lithium\action\Controller {
 
-    public $publicActions = array('login','index','view','add');
+    public $publicActions = array('login','index','view');
 
     public function index() {
         $users = Users::all();
@@ -32,7 +33,7 @@ class UsersController extends \lithium\action\Controller {
         if ( $this->request->data ) {
             $register = Users::create($this->request->data);
             if ( $register->save() ) {
-                Session::write('message', 'User added');
+                Session::write('Auth.message', 'User added');
                 $this->redirect('Users::index');
             }
 
@@ -48,13 +49,13 @@ class UsersController extends \lithium\action\Controller {
         $user = Users::find($this->request->params['id']);
 
         if (!$user) {
-            Session::write('message', 'Please Login');
+            Session::write('Auth.message', 'Please Login');
             return $this->redirect('Users::login');
         }
 
         if (( $this->request->data )&& $user->save($this->request->data)) {
             $register = Users::create($this->request->data);
-            Session::write('message', 'User saved');
+            Session::write('Auth.message', 'User saved');
             $this->redirect(array('Users::view', 'args' => array($user->id)));
         }
 
@@ -66,11 +67,11 @@ class UsersController extends \lithium\action\Controller {
         if (Auth::check('default', $this->request)) {
 //TODO: Can't get li3_users to work
 //        if (Auth::check('user', $this->request)) {
-            Session::write('message', 'Login success');
+            Session::write('Auth.message', 'Login success');
             return $this->redirect('/');
         }
         if ($this->request->data) {
-            Session::write('message', 'Incorrect Username/Password Combination');
+            Session::write('Auth.message', 'Incorrect Username/Password Combination');
         }
     }
 
@@ -78,7 +79,7 @@ class UsersController extends \lithium\action\Controller {
         Auth::clear('default');
 //TODO: Can't get li3_users to work
 //        Auth::clear('user');
-        Session::write('message', 'Logout success');
+        Session::write('Auth.message', 'Logout success');
         return $this->redirect('/');
     }
 

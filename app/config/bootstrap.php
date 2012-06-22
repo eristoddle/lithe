@@ -89,5 +89,13 @@ if (PHP_SAPI === 'cli') {
 	require __DIR__ . '/bootstrap/console.php';
 }
 
+/**
+ *ali3 configuration 
+ */
+require __DIR__ . '/bootstrap/config.php';
+
+/**
+ *filters 
+ */
 require __DIR__ . '/bootstrap/filters.php';
 ?>
