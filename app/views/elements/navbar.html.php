@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="/">lithe</a>
+			<a class="brand" href="/"><?=$this->ConfigHelper->read('site_title'); ?></a>
 			<!--Think I may have to add dropdown to bootstrap-->
 			<!--<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">

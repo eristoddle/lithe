@@ -1,4 +1,4 @@
 <hr />
 <footer class="row-fluid">
-    &copy; <a href="http://www.stephanmiller.com">Stephan Miller</a> <?=strftime("%Y");?>
+    &copy; <a href="<?=$this->ConfigHelper->read('footer_copyright_link'); ?>"><?=$this->ConfigHelper->read('footer_copyright_anchor'); ?></a> <?=strftime("%Y");?>
 </footer>
