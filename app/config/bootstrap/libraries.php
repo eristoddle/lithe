@@ -123,11 +123,6 @@ Libraries::add('app', array('default' => true));
 Libraries::add('li3_docs');
 
 /**
- * Lithium Paginate library
- */
-Libraries::add('li3_paginate');
-
-/**
  * Lithium Markdown library
  */
 Libraries::add('li3_markdown');
