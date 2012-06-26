@@ -99,4 +99,14 @@ require __DIR__ . '/bootstrap/config.php';
  */
 require __DIR__ . '/bootstrap/filters.php';
 
+/**
+ *auth
+ */
+require __DIR__ . '/bootstrap/auth.php';
+
+//Took out - can't get to work
+/**
+ *li3_access
+ */
+//require __DIR__ . '/bootstrap/access.php';
 ?>

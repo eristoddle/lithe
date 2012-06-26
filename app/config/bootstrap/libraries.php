@@ -132,4 +132,9 @@ Libraries::add('li3_markdown');
  */
 Libraries::add('ali3');
 
+/**
+ * Lithium Access library
+ */
+Libraries::add('li3_access');
+
 ?>
