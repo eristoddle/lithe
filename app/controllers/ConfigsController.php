@@ -60,22 +60,23 @@ class ConfigsController extends \lithium\action\Controller {
     * Store only allows. Deny by default unless in publicActions.
     * Name format: level_controller (all actions) or level_controller_action
     * Key: always true
+    *Not currently used
     */
-    public function isPermitted($access, $controller, $action=null) {
-        
-        $name = 'perm_'.$access."_" .$controller;
-        
-        if ($value = Config::read('default', $name)){
-            return compact('value');
-        }
-        
-        $name = 'perm_'.$access."_".$controller."_".$action;
-        
-        if ($value = Config::read('default', $name)){
-            return compact('value');
-        }
-        
-    }
+//    public function isPermitted($access, $controller, $action) {
+//        
+//        $name = strtolower('perm_'.$access."_".$controller."_".$action);
+//        
+//        if ($value = Config::read('default', $name)){
+//            return compact('value');
+//        }
+//        
+//        $name = strtolower('perm_'.$access."_" .$controller);
+//        
+//        if ($value = Config::read('default', $name)){
+//            return compact('value');
+//        }
+//        
+//    }
 }
 
 ?>

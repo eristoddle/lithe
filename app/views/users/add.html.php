@@ -6,8 +6,8 @@
         'list' => array(
             'default' => 'default',
             'admin' => 'admin',
-            'staff' => 'staff',
-            'installer' => 'installer',
+            'editor' => 'editor',
+            'contributor' => 'contributor',
         )
     )); ?>
     <?=$this->form->field('active', array(

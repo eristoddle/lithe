@@ -28,7 +28,25 @@ Auth::config(array(
         'adapter' => 'Form',
         'model' => 'Users',
         'fields' => array('username', 'password'),
-        'scope' => array('active' => true)
+        'scope' => array('active' => 'active')
+	),
+    'admin' => array(
+        'adapter' => 'Form',
+        'model' => 'Users',
+        'fields' => array('username', 'password'),
+        'scope' => array('active' => 'active','access' => 'admin')
+	),
+    'editor' => array(
+        'adapter' => 'Form',
+        'model' => 'Users',
+        'fields' => array('username', 'password'),
+        'scope' => array('active' => 'active','access' => 'editor')
+	),
+    'contributor' => array(
+        'adapter' => 'Form',
+        'model' => 'Users',
+        'fields' => array('username', 'password'),
+        'scope' => array('active' => 'active','access' => 'contributor')
 	),
 ));
 

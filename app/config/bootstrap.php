@@ -108,5 +108,5 @@ require __DIR__ . '/bootstrap/auth.php';
 /**
  *li3_access
  */
-//require __DIR__ . '/bootstrap/access.php';
+require __DIR__ . '/bootstrap/access.php';
 ?>

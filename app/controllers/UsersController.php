@@ -64,10 +64,26 @@ class UsersController extends \lithium\action\Controller {
     }
 
     public function login() {
+        if (Auth::check('admin', $this->request)) {
+            Session::write('Auth.message', 'Login success');
+            return $this->redirect('/');
+        }
+        
+        if (Auth::check('editor', $this->request)) {
+            Session::write('Auth.message', 'Login success');
+            return $this->redirect('/');
+        }
+        
+        if (Auth::check('contributor', $this->request)) {
+            Session::write('Auth.message', 'Login success');
+            return $this->redirect('/');
+        }
+        
         if (Auth::check('default', $this->request)) {
             Session::write('Auth.message', 'Login success');
             return $this->redirect('/');
         }
+        
         if ($this->request->data) {
             Session::write('Auth.message', 'Incorrect Username/Password Combination');
         }
@@ -75,6 +91,9 @@ class UsersController extends \lithium\action\Controller {
 
     public function logout() {
         Auth::clear('default');
+        Auth::clear('contributor');
+        Auth::clear('editor');
+        Auth::clear('admin');
         Session::write('Auth.message', 'Logout success');
         return $this->redirect('/');
     }

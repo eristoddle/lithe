@@ -9,14 +9,15 @@ use lithium\analysis\Logger;
 use lithium\data\Connections;
 
 use ali3\storage\Session;
-use app\controllers\ConfigsController;
+//use app\controllers\ConfigsController;
+use li3_access\security\Access;
 
 /**
  * improved authentication using filters
  * http://lithify.me/docs/manual/lithium-basics/filters.wiki
  */
 //TODO: Redirect to last page after login using sessions
-//TODO: Create a better access level algo, more lithonic, if that is a word
+//TODO: Users should be able to edit their own details - How?
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
     
     $ctrl = $chain->next($self, $params, $chain);
@@ -26,25 +27,30 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
         return $ctrl;
     }
     
-    //Check if user is logged in
-    if ($user = Auth::check('default')) {
-        //Check if activated
-        if ($user['active'] == "active") {
-            //Check if logged in user has access
-            $isPermitted = ConfigsController::isPermitted(
-                $user['access'], 
-                $params['request']->controller, 
-                $params['request']->action
-            );
-
-            if ($isPermitted){
-                return $ctrl;
-            }
-            
-            Session::write('message', 'You do not have access to this page');
-
-        }
+    //admin is god
+    if ($user = Auth::check('admin')) {
+        return $ctrl;
     }
+    
+    //Check if user is logged in
+//    if ($user = Auth::check('default')) {
+//        //Check if activated
+//        if ($user['active'] == "active") {
+//            //Check if logged in user has access
+//            $isPermitted = ConfigsController::isPermitted(
+//                $user['access'], 
+//                $params['request']->controller, 
+//                $params['request']->action
+//            );
+//
+//            if ($isPermitted){
+//                return $ctrl;
+//            }
+//            
+//            Session::write('message', 'You do not have access to this page');
+//
+//        }
+//    }
 	
     //If nothing makes it through, login
     return function() {

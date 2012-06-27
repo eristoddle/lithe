@@ -7,26 +7,26 @@ use li3_access\security\Access;
 use app\models\Users;
 
 //Rbac
-//Access::config(array(
-//    'rbac' => array(
-//        'adapter' => 'AuthRbac',
-//        'roles' => array(
-//            array(
-//                'match' => array('Posts::add'),
-//                //requesters is the auth config
-//                'requesters' => array('default'),
-//                'message' => 'Log in to add posts.',
-//                'redirect' => 'Users::login',
-//            ),
-//            array(
-//                'match' => array('Users::add'),
-//                'requesters' => array('admin'),
-//                'message' => 'Log in to add users.',
-//                'redirect' => 'Users::login',
-//            ),
-//        )
-//    )
-//));
+Access::config(array(
+    'rbac' => array(
+        'adapter' => 'AuthRbac',
+        'roles' => array(
+            array(
+                'match' => array('Posts::add'),
+                //requesters is the auth config
+                'requesters' => array('default'),
+                'message' => 'Log in to add posts.',
+                'redirect' => 'Users::login',
+            ),
+            array(
+                'match' => array('Users::add'),
+                'requesters' => array('admin'),
+                'message' => 'Log in to add users.',
+                'redirect' => 'Users::login',
+            ),
+        )
+    )
+));
 //Rules Based
 //Access::config(array(
 //	'rules' => array(
