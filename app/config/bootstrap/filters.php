@@ -30,14 +30,24 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
         if ($user['active'] == "active") {
             //Check if logged in user has access
             if ($user['access'] == "admin"){
+                //return $ctrl;
+            }
+            if ($user['access'] == "staff"){
                 return $ctrl;
             }
+            if ($user['access'] == "installer"){
+                return $ctrl;
+            }
+            if ($user['access'] == "default"){
+                return $ctrl;
+            }
+            echo $user['access'];
             //Start controller/action based rules
             $controller = $params['params']['controller'];
             $action = $params['params']['action'];
-            //var_dump($params);
+            
+            Session::write('message', 'You do not have access to this page');
 
-            return $ctrl;
         }
     }
 	

@@ -62,7 +62,7 @@ class Form extends \lithium\template\helper\Form {
 
         $options['wrap']['class'] .= ' control-group';
 
-		#TODO: This errors out if not commented
+        //TODO: This errors out if not commented
         /* $errors = $this->_binding->errors();
 
         if (isset($errors[$name])) {
