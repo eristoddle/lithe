@@ -9,14 +9,16 @@ use lithium\analysis\Logger;
 use lithium\data\Connections;
 
 use ali3\storage\Session;
+use app\controllers\ConfigsController;
 
 /**
  * improved authentication using filters
  * http://lithify.me/docs/manual/lithium-basics/filters.wiki
  */
 //TODO: Redirect to last page after login using sessions
+//TODO: Create a better access level algo, more lithonic, if that is a word
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
-	
+    
     $ctrl = $chain->next($self, $params, $chain);
     
     //If public action, don't check
@@ -29,22 +31,15 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
         //Check if activated
         if ($user['active'] == "active") {
             //Check if logged in user has access
-            if ($user['access'] == "admin"){
-                //return $ctrl;
-            }
-            if ($user['access'] == "staff"){
+            $isPermitted = ConfigsController::isPermitted(
+                $user['access'], 
+                $params['request']->controller, 
+                $params['request']->action
+            );
+
+            if ($isPermitted){
                 return $ctrl;
             }
-            if ($user['access'] == "installer"){
-                return $ctrl;
-            }
-            if ($user['access'] == "default"){
-                return $ctrl;
-            }
-            echo $user['access'];
-            //Start controller/action based rules
-            $controller = $params['params']['controller'];
-            $action = $params['params']['action'];
             
             Session::write('message', 'You do not have access to this page');
 

@@ -9,7 +9,7 @@ use ali3\storage\Session;
 
 class UsersController extends \lithium\action\Controller {
 
-    public $publicActions = array('login','index','view');
+    public $publicActions = array('login','logout','index','view');
 
     public function index() {
         $users = Users::all();
@@ -65,8 +65,6 @@ class UsersController extends \lithium\action\Controller {
 
     public function login() {
         if (Auth::check('default', $this->request)) {
-//TODO: Can't get li3_users to work
-//        if (Auth::check('user', $this->request)) {
             Session::write('Auth.message', 'Login success');
             return $this->redirect('/');
         }
@@ -77,8 +75,6 @@ class UsersController extends \lithium\action\Controller {
 
     public function logout() {
         Auth::clear('default');
-//TODO: Can't get li3_users to work
-//        Auth::clear('user');
         Session::write('Auth.message', 'Logout success');
         return $this->redirect('/');
     }

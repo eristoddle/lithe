@@ -54,6 +54,28 @@ class ConfigsController extends \lithium\action\Controller {
         Config::delete('default', $this->request->args[0]);
 		return $this->redirect('Configs::index');
 	}
+    
+    /**
+    *Retrieve permissions details from config
+    * Store only allows. Deny by default unless in publicActions.
+    * Name format: level_controller (all actions) or level_controller_action
+    * Key: always true
+    */
+    public function isPermitted($access, $controller, $action=null) {
+        
+        $name = 'perm_'.$access."_" .$controller;
+        
+        if ($value = Config::read('default', $name)){
+            return compact('value');
+        }
+        
+        $name = 'perm_'.$access."_".$controller."_".$action;
+        
+        if ($value = Config::read('default', $name)){
+            return compact('value');
+        }
+        
+    }
 }
 
 ?>
