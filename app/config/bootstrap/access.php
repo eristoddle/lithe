@@ -6,6 +6,8 @@ use li3_access\security\Access;
 
 use app\models\Users;
 
+$accountsEmpty = Users::count();
+
 //Rbac
 Access::config(array(
     'rbac' => array(
@@ -19,7 +21,7 @@ Access::config(array(
                 'redirect' => 'Users::login',
             ),
             array(
-                'match' => array('Users::add'),
+                'match' => array('*::*'),
                 'requesters' => array('admin'),
                 'message' => 'Log in to add users.',
                 'redirect' => 'Users::login',

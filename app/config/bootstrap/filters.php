@@ -28,28 +28,8 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
     }
     
     //admin is god
-    if ($user = Auth::check('admin')) {
-        return $ctrl;
-    }
-    
-    //Check if user is logged in
-//    if ($user = Auth::check('default')) {
-//        //Check if activated
-//        if ($user['active'] == "active") {
-//            //Check if logged in user has access
-//            $isPermitted = ConfigsController::isPermitted(
-//                $user['access'], 
-//                $params['request']->controller, 
-//                $params['request']->action
-//            );
-//
-//            if ($isPermitted){
-//                return $ctrl;
-//            }
-//            
-//            Session::write('message', 'You do not have access to this page');
-//
-//        }
+//    if ($user = Auth::check('admin')) {
+//        return $ctrl;
 //    }
 	
     //If nothing makes it through, login

@@ -64,23 +64,24 @@ class UsersController extends \lithium\action\Controller {
     }
 
     public function login() {
+        
         if (Auth::check('admin', $this->request)) {
-            Session::write('Auth.message', 'Login success');
+            Session::write('Auth.message', 'Admin Login success');
             return $this->redirect('/');
         }
         
         if (Auth::check('editor', $this->request)) {
-            Session::write('Auth.message', 'Login success');
+            Session::write('Auth.message', 'Editor Login success');
             return $this->redirect('/');
         }
         
         if (Auth::check('contributor', $this->request)) {
-            Session::write('Auth.message', 'Login success');
+            Session::write('Auth.message', 'Contributer Login success');
             return $this->redirect('/');
         }
         
         if (Auth::check('default', $this->request)) {
-            Session::write('Auth.message', 'Login success');
+            Session::write('Auth.message', 'User Login success');
             return $this->redirect('/');
         }
         
