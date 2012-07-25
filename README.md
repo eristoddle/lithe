@@ -9,6 +9,8 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 
 [Blog Post Here](http://eristoddle.github.com/lithium/2012/05/29/lithe-a-blog-using-the-lithium-framework/)
 
+Currently stopped development on this and an working on this [Lithium Question and Answer app](https://bitbucket.org/eristoddle/li3_question_answer). Will be coming back to it though.
+
 ##DONE
 - Basic Posts - title, body,tags
 - Authenticated users
@@ -22,6 +24,8 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
 - Pagination
 - Post Slugs
 - Add salt to hashing
+- Site configuration using ali3
+- 4 access levels and permissions
 
 ##TODO
 - Pages
@@ -37,6 +41,6 @@ After learning the base MVC struture of Lithium, digest filters and helpers. Tha
     - Bidirectional filterable tags
     - Tag model for tag level attributes (sortable tags)
 - Silo site structure
-- Site configuration using ali3
-- Authorization levels
 - Unique user email
+- XML Sitemap
+- Piwik analytics

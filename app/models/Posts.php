@@ -21,24 +21,6 @@ class Posts extends \lithium\data\Model {
         $_user = Users::find($record->user_id);
         return $record->_user = $_user;
     }
-    
-    //TODO: Set flash messages from Validator
-    function set_flash_message($message){
-   
-        if(is_array($message)){
-            $display = '<ul>';
-            foreach($message as $key=>$val){
-                foreach($val as $entry){
-                    $display.='<li>'.$entry.'</li>';
-                } 
-            }
-            $display.='</ul>';
-        }
-        else {
-            $display = $message;
-        }
-        Session::write('Auth.message', $display);
-    }
 
 }
 
